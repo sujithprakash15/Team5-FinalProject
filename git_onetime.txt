@@ -1,0 +1,33 @@
+#One-Time 
+# 1. Clone the repository (if not already done)
+git clone https://github.com/sujithprakash15/Team5-FinalProject.git
+
+# 2. To Check available branches in local machine
+git branch 
+
+first time only main or master will be available in local dont panic search for sujith to clear it
+
+# 3. Go to that foler
+cd Team5-FinalProject
+or 
+open cmd from that folder
+
+
+# 3. Create and switch to your personal branch(kindly use your branch only and dont create new branches)
+
+git checkout -b sujith
+or 
+git checkout -b harini
+or
+git checkout -b dinesh
+or
+git checkout -b hasith
+or
+git checkout -b nive
+
+
+# 3. Pull latest changes in your branch
+git pull origin your-name
+
+
+

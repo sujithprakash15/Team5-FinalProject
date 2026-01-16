@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Backend/" />
+  <Folder Name="/Backend/Apis/">
+    <Project Path="Backend/Apis/TicketingWebApi/TicketingWebApi.csproj" />
+  </Folder>
+  <Folder Name="/Backend/Libraries/">
+    <Project Path="Backend/Libraries/TicketingLibrary/TicketingLibrary.csproj" />
+  </Folder>
+</Solution>
