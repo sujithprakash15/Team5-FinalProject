@@ -1,8 +1,9 @@
 using System;
+using TicketingLibrary.Interfaces;
 
 namespace TicketingLibrary.Repos;
 
-public class EFSLARepository
+public class EFSLARepository : ISLARepository
 {
 
 }
