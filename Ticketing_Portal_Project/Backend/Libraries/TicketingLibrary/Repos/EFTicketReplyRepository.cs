@@ -1,8 +1,9 @@
 using System;
+using TicketingLibrary.Interfaces;
 
 namespace TicketingLibrary.Repos;
 
-public class EFTicketReplyRepository
+public class EFTicketReplyRepository : ITicketReplyRepository
 {
 
 }
