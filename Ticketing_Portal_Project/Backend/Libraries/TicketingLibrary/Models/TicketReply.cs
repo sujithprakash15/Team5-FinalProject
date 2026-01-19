@@ -10,6 +10,7 @@ namespace TicketingLibrary.Models
         [Key]
         [Column(TypeName = "CHAR(6)")]
         public string? ReplyId { get; set; }
+        
 
         [Column(TypeName = "CHAR(4)")]
         public string? TicketId { get; set; }
@@ -20,6 +21,9 @@ namespace TicketingLibrary.Models
         [Column(TypeName = "CHAR(4)")]
         public string? ReplyByAssignedEmpId { get; set; }
 
+        [Column(TypeName = "VARCHAR(100)")]
+        public string? ReplyMessage {get;set;}
+
         [ForeignKey("TicketId")]
         public virtual Ticket? Ticket { get; set; }
 
@@ -28,5 +32,6 @@ namespace TicketingLibrary.Models
         
         [ForeignKey("ReplyByAssignedEmpId")]
         public virtual Employee? ReplyByAssigned { get; set; } 
+
     }
 }
