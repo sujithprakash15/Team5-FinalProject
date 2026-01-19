@@ -7,8 +7,7 @@ public interface IDepartmentRepository
 {
     Task AddDepartmentAsync(Department department);
     Task<List<Department>> GetAllDepartmentsAsync();
-    Task<Department> GetDepartmentByIdAsync(int departmentId);   
-    Task UpdateDepartmentAsync(int departmentId, Department department);
-    Task DeleteDepartmentAsync(int departmentId);
+    Task<Department> GetDepartmentByIdAsync(string departmentId);   
+    Task UpdateDepartmentAsync(string departmentId, Department department);
+    Task DeleteDepartmentAsync(string departmentId);
 }
-
