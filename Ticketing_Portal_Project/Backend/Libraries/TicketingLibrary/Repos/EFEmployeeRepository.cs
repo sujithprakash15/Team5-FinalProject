@@ -69,20 +69,40 @@ namespace TicketingLibrary.Repositories
         }
         public async Task DeleteEmployeeAsync(string empId)
         {
-            Employee empToDelete = await context.Employees.FirstOrDefaultAsync(e => e.EmpId == empId);
+             Employee empToDelete = await context.Employees
+                .Include(e => e.CreatedTickets)
+                .Include(e => e.AssignedTickets)
+                .Include(e => e.CreatorReplies)
+                .Include(e => e.AssignedReplies)
+                .FirstOrDefaultAsync(e => e.EmpId == empId);
+
             if (empToDelete == null)
+                throw new TicketException("Employee not found", 511);
+
+            if (empToDelete.CreatedTickets.Count > 0 ||
+                empToDelete.AssignedTickets.Count > 0 ||
+                empToDelete.CreatorReplies.Count > 0 ||
+                empToDelete.AssignedReplies.Count > 0)
             {
-                throw new TicketException("No such Employee ID", 502);
+                throw new TicketException(
+                    "Cannot delete employee because related records exists", 510);
             }
-            if (empToDelete.CreatedTickets == null || empToDelete.AssignedTickets.Count == 0)
+
+            try
             {
                 context.Employees.Remove(empToDelete);
                 await context.SaveChangesAsync();
             }
-            else
+            catch (DbUpdateException ex)
             {
-                throw new TicketException(
-                    "Cannot delete Employee because tickets are assigned", 504);
+                SqlException sqlException = ex.InnerException as SqlException;
+                int errorNumber = sqlException.Number;
+
+                switch (errorNumber)
+                {
+                    default:
+                        throw new TicketException(sqlException.Message, 599);
+                }
             }
         }
         public async Task<Employee> LoginAsync(string empId, string password)

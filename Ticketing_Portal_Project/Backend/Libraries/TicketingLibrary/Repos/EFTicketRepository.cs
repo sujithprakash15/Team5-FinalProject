@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using TicketingLibrary.Interfaces;
 using TicketingLibrary.Models;
  
-namespace TicketingLibrary.Repositories
+namespace TicketingLibrary.Repos
 {
     public class EFTicketRepository : ITicketRepository
     {
