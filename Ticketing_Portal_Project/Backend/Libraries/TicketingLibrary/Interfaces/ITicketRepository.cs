@@ -10,6 +10,7 @@ public interface ITicketRepository
     Task<List<Ticket>> GetTicketsByAssignedEmployeeAsync(int empId);
     Task AddTicketAsync(Ticket ticket);
     Task UpdateTicketStatusAsync(int ticketId, string status);
+    Task DeleteTicketStatusAsync(int ticketId);
     Task<List<Ticket>> GetTicketsByTicketTypeAsync(int ticketTypeId);
 }
 
