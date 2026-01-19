@@ -1,5 +1,5 @@
 using TicketingLibrary.Models;
-
+ 
 namespace TicketingLibrary.Interfaces
 {
     public interface ITicketRepository
@@ -11,5 +11,7 @@ namespace TicketingLibrary.Interfaces
         Task<List<Ticket>> GetTicketsByTicketTypeAsync(string ticketTypeId);
         Task AddTicketAsync(Ticket ticket);
         Task UpdateTicketStatusAsync(string ticketId, string status);
+        Task DeleteTicketAsync (string ticketId);
     }
 }
+ 
