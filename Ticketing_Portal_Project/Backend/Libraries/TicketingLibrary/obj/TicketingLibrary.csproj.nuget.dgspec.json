@@ -1,7 +1,18 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj": {}
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    "D:\\sujith as team lead\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj": {}
+=======
+<<<<<<< HEAD
+    "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj": {}
+>>>>>>> 704d652f3ceb1f4895bccd1a9f3851394deeb4a7
+>>>>>>> b3eacf9e40530be53cec3eaeaf9dea38188572fe
   },
   "projects": {
     "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj": {
@@ -11,7 +22,32 @@
         "projectName": "TicketingLibrary",
         "projectPath": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
         "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
+<<<<<<< HEAD
         "outputPath": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\obj\\",
+=======
+<<<<<<< HEAD
+        "outputPath": "D:\\sujith as team lead\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\obj\\",
+=======
+        "outputPath": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\obj\\",
+=======
+>>>>>>> 948164802868693740dffc052a759397ae3fa053
+    "C:\\Users\\user1\\Desktop\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\user1\\Desktop\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user1\\Desktop\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
+        "projectName": "TicketingLibrary",
+        "projectPath": "C:\\Users\\user1\\Desktop\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
+        "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user1\\Desktop\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\obj\\",
+<<<<<<< HEAD
+=======
+>>>>>>> 1efc72dfeb3fffd0add1e42376324f762c9c477c
+>>>>>>> 704d652f3ceb1f4895bccd1a9f3851394deeb4a7
+>>>>>>> 948164802868693740dffc052a759397ae3fa053
+>>>>>>> b3eacf9e40530be53cec3eaeaf9dea38188572fe
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config"
