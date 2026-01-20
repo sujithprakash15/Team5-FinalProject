@@ -1,0 +1,120 @@
+<div class="department-container">
+  <!-- Form Section -->
+  <section class="form-section">
+    <div class="form-header">
+      <div class="form-icon">🏢</div>
+      <div>
+        <h2 class="form-title">Department Management</h2>
+        <p class="form-subtitle">Add, update, or remove departments</p>
+      </div>
+    </div>
+
+    <form class="department-form" #deptForm="ngForm">
+      <div class="form-group">
+        <label for="deptId" class="form-label required">Department ID</label>
+        <input
+          type="text"
+          id="deptId"
+          [(ngModel)]="department.deptId"
+          name="deptId"
+          class="form-input"
+          placeholder="Enter department ID (e.g., D001)" />
+      </div>
+
+      <div class="form-group">
+        <label for="deptName" class="form-label required">Department Name</label>
+        <input
+          type="text"
+          id="deptName"
+          [(ngModel)]="department.deptName"
+          name="deptName"
+          class="form-input"
+          placeholder="Enter department name" />
+      </div>
+
+      <div class="form-group">
+        <label for="description" class="form-label">Description</label>
+        <input
+          type="text"
+          id="description"
+          [(ngModel)]="department.description"
+          name="description"
+          class="form-input"
+          placeholder="Enter department description" />
+      </div>
+    </form>
+
+    <div class="form-actions">
+      <button
+        type="button"
+        (click)="saveDepartment()"
+        class="action-btn add-btn">
+        Add Department
+      </button>
+
+      <button
+        type="button"
+        (click)="updateDepartment()"
+        class="action-btn update-btn">
+        Update
+      </button>
+
+      <button
+        type="button"
+        (click)="getDepartment()"
+        class="action-btn show-btn">
+        Show
+      </button>
+
+      <button
+        type="button"
+        (click)="deleteDepartment()"
+        class="action-btn delete-btn">
+        Delete
+      </button>
+    </div>
+
+    <div *ngIf="errMsg" class="error-container">
+      <div class="error-message">
+        {{ errMsg }}
+      </div>
+    </div>
+  </section>
+
+  <!-- Table Section -->
+  <section class="table-section">
+    <div class="table-header">
+      <div class="table-icon">📋</div>
+      <div>
+        <h2 class="table-title">Departments List</h2>
+        <p class="table-subtitle">List of all available departments</p>
+      </div>
+    </div>
+
+    <div *ngIf="departments.length === 0" class="empty-state">
+      <div class="empty-icon">📭</div>
+      <p class="empty-text">
+        No departments available. Add your first department to get started.
+      </p>
+    </div>
+
+    <div *ngIf="departments.length > 0" class="departments-table-container">
+      <table class="departments-table">
+        <thead>
+          <tr>
+            <th>Department ID</th>
+            <th>Department Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let dept of departments">
+            <td>{{ dept.deptId }}</td>
+            <td>{{ dept.deptName }}</td>
+            <td>{{ dept.description }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
