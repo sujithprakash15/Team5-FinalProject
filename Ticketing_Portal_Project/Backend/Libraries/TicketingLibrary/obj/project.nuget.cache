@@ -1,8 +1,20 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "x+thO/ZXfPc=",
   "success": true,
   "projectFilePath": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
+=======
+<<<<<<< HEAD
+  "dgSpecHash": "v7OSanKuAwM=",
+  "success": true,
+  "projectFilePath": "D:\\sujith as team lead\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
+=======
+  "dgSpecHash": "cuK2bjFipNg=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\user1\\Desktop\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
+>>>>>>> 173531be3165d28866734bb87dbe1c9a7d030baa
+>>>>>>> fdd055367452c94d69460109ee93ad1b7412f2c8
   "expectedPackageFiles": [
     "C:\\Users\\user1\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
@@ -66,10 +78,24 @@
     {
       "code": "Undefined",
       "level": "Warning",
+<<<<<<< HEAD
       "message": "Problem reading the cache file D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
       "projectPath": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
       "warningLevel": 1,
       "filePath": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
+=======
+<<<<<<< HEAD
+      "message": "Problem reading the cache file D:\\sujith as team lead\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "D:\\sujith as team lead\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
+      "warningLevel": 1,
+      "filePath": "D:\\sujith as team lead\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
+=======
+      "message": "Problem reading the cache file C:\\Users\\user1\\Desktop\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "C:\\Users\\user1\\Desktop\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\user1\\Desktop\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
+>>>>>>> 173531be3165d28866734bb87dbe1c9a7d030baa
+>>>>>>> fdd055367452c94d69460109ee93ad1b7412f2c8
       "targetGraphs": []
     }
   ]
