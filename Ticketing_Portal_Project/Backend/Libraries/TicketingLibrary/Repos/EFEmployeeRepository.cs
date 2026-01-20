@@ -13,7 +13,12 @@ namespace TicketingLibrary.Repositories
         EYTicketPortalContext context = new EYTicketPortalContext();
         public async Task<List<Employee>> GetAllEmployeesAsync()
         {
-            return await context.Employees.ToListAsync();
+            List<Employee> employees = await context.Employees.ToListAsync();
+            if (employees.Count == 0)
+            {
+                throw new TicketException("No employees found", 505);
+            }
+            return employees;
         }
         public async Task<Employee> GetEmployeeByIdAsync(string empId)
         {
