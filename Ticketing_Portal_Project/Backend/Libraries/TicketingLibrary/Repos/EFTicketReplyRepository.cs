@@ -93,34 +93,15 @@ public class EFTicketReplyRepository : ITicketReplyRepository
 
     public async Task UpdateReplyAsync(string replyId, TicketReply reply)
     {
-<<<<<<< HEAD
-        throw new NotImplementedException();
-    }
-
-    public Task UpdateReplyAsync(string replyId, TicketReply reply)
-    {
-        try
-        {
-            TicketType existingTicketType = await GetTicketTypeAsync(ticketTypeId);
-            existingTicketType.TypeName = ticketType.TypeName;
-            existingTicketType.Description = ticketType.Description;
-            // existingTicketType.SLAId = ticketType.SLAId;
-            // existingTicketType.DeptId = ticketType.DeptId;
-=======
         TicketReply ticketreply2edit = await GetReplyAsync(replyId);
         try
         {
             ticketreply2edit.ReplyMessage = reply.ReplyMessage;
->>>>>>> b3eacf9e40530be53cec3eaeaf9dea38188572fe
             await context.SaveChangesAsync();
         }
         catch
         {
-<<<<<<< HEAD
-            throw new TicketException("Error Cannot Update Ticket Type", 400);
-=======
             throw new TicketException("Unable to update", 503);
->>>>>>> b3eacf9e40530be53cec3eaeaf9dea38188572fe
         }
     }
 }
