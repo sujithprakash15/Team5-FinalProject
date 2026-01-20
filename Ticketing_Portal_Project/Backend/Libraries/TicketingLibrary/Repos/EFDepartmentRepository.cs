@@ -6,14 +6,20 @@ using TicketingLibrary.Models;
 
 namespace TicketingLibrary.Repositories
 {
-    public class EFDepartmentRepository : IDepartmentRepository
+       public class EFDepartmentRepository : IDepartmentRepository
     {
         EYTicketPortalContext context = new EYTicketPortalContext();
-
         public async Task<List<Department>> GetAllDepartmentsAsync()
         {
-            return await context.Departments.ToListAsync();
+            List<Department> departments = await context.Departments.ToListAsync();
+
+            if (departments.Count == 0)
+            {
+                throw new TicketException("The Department list is currently empty.", 505);
+            }
+            return departments;
         }
+
         public async Task<Department> GetDepartmentByIdAsync(string deptId)
         {
             try
@@ -38,7 +44,6 @@ namespace TicketingLibrary.Repositories
             {
                 SqlException sqlException = ex.InnerException as SqlException;
                 int errorNumber = sqlException.Number;
-
                 switch (errorNumber)
                 {
                     case 2627:
@@ -51,7 +56,6 @@ namespace TicketingLibrary.Repositories
         public async Task UpdateDepartmentAsync(string deptId, Department department)
         {
             Department deptToEdit = await GetDepartmentByIdAsync(deptId);
-
             try
             {
                 deptToEdit.DeptName = department.DeptName;
@@ -70,13 +74,12 @@ namespace TicketingLibrary.Repositories
                 .Include("Employees")
                 .Include("TicketTypes")
                 .FirstOrDefaultAsync(d => d.DeptId == deptId);
-
             if (deptToDelete == null)
             {
                 throw new TicketException("No such Department ID", 502);
             }
-
-            if (deptToDelete.Employees.Count ==  0 && deptToDelete.TicketTypes.Count == 0)
+            if (deptToDelete.Employees.Count == 0 &&
+                deptToDelete.TicketTypes.Count == 0)
             {
                 context.Departments.Remove(deptToDelete);
                 await context.SaveChangesAsync();

@@ -6,7 +6,7 @@ namespace TicketingLibrary.Interfaces;
 public interface ITicketTypeRepository
 {
     Task<List<TicketType>> GetAllTicketTypesAsync();
-    Task<TicketType> GetTicketTypeAsync();
+    Task<TicketType> GetTicketTypeAsync(string ticketTypeId);
     Task AddTicketTypeAsync(TicketType ticketType);
     Task UpdateTicketTypeAsync(string ticketTypeId,TicketType ticketType);
     Task DeleteTicketTypeAsync(string ticketTypeId);
