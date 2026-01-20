@@ -17,13 +17,13 @@ export class LoginComponent {
   loginSvc: LoginService = inject(LoginService);
   router: Router = inject(Router);
 
-  user: Employee | null;
+  user: Employee;
   empId: string;
   password: string;
   errMsg: string;
 
   constructor() {
-    this.user = null;
+    this.user = new Employee("", "", "", "", "");
     this.empId = "";
     this.password = "";
     this.errMsg = "";
