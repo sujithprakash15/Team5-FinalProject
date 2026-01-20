@@ -12,7 +12,12 @@ namespace TicketingLibrary.Repositories
 
         public async Task<List<SLA>> GetAllSLAsAsync()
         {
-            return await context.SLAs.ToListAsync();
+            List<SLA> slas = await context.SLAs.ToListAsync();
+            if(slas.Count == 0)
+            {
+                throw new TicketException("The SLA list is currently empty",505);
+            }
+            return slas;
         }
         public async Task<SLA> GetSLAAsync(string slaId)
         {

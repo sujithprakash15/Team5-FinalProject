@@ -7,5 +7,7 @@ namespace TicketingWebApi.Controllers
     [ApiController]
     public class TicketReplyController : ControllerBase
     {
+        
+        
     }
 }
