@@ -7,8 +7,10 @@ public interface IEmployeeRepository
 {
     Task AddEmployeeAsync(Employee employee);
     Task<List<Employee>> GetAllEmployeesAsync();
-    Task<Employee> GetEmployeeByIdAsync(int empId);   
-    Task UpdateEmployeeAsync(int empId, Employee employee);
-    Task DeleteEmployeeAsync(int empId);
+    Task<Employee> GetEmployeeByIdAsync(string empId);   
+    Task UpdateEmployeeAsync(string empId, Employee employee);
+    Task DeleteEmployeeAsync(string empId);
+    Task<Employee> LoginAsync(string empId, string Password);
+    
 }
 
