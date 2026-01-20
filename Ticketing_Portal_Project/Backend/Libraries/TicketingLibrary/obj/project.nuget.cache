@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "x+thO/ZXfPc=",
   "success": true,
   "projectFilePath": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
-=======
-  "dgSpecHash": "cuK2bjFipNg=",
-  "success": true,
-  "projectFilePath": "C:\\Users\\user1\\Desktop\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
->>>>>>> d4951a1a86cf8d6be6f003c63786360b7c29730b
   "expectedPackageFiles": [
     "C:\\Users\\user1\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
