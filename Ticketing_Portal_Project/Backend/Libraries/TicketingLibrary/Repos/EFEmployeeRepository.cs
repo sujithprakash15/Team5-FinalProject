@@ -125,6 +125,7 @@ namespace TicketingLibrary.Repositories
             {
                 throw new TicketException(ex.Message, 599);
             }
+
         }
     }
 }
