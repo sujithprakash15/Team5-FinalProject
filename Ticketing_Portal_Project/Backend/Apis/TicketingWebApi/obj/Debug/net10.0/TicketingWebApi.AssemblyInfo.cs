@@ -13,7 +13,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TicketingWebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cabc5fbc6075fcdcb9952ab3c30ca7220739b750")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d4951a1a86cf8d6be6f003c63786360b7c29730b")]
+>>>>>>> harini
 [assembly: System.Reflection.AssemblyProductAttribute("TicketingWebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TicketingWebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

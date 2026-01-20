@@ -13,7 +13,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TicketingLibrary")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f08710a2bea0a24bf727d96204e7638ccaf444f6")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d4951a1a86cf8d6be6f003c63786360b7c29730b")]
+>>>>>>> harini
 [assembly: System.Reflection.AssemblyProductAttribute("TicketingLibrary")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TicketingLibrary")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
