@@ -14,10 +14,10 @@ public interface ITicketReplyRepository
 
     Task <List<TicketReply>> GetAllRepliesAsync();
 
-    Task <TicketReply> GetReplyByTicketId(string ticketId);  
+    Task <List<TicketReply>> GetRepliesByTicketId(string ticketId);  
 
-    Task<TicketReply> GetReplyByEmpId(string empId);
+    Task<List<TicketReply>> GetRepliesByEmpId(string empId);
 
-    Task<TicketReply> GetReplyByAssingedEmpId(string assignedempId);
+    Task<List<TicketReply>> GetRepliesByAssingedEmpId(string assignedempId);
 
 }
