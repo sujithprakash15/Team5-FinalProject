@@ -10,7 +10,7 @@ namespace TicketingLibrary.Interfaces
         Task<List<Ticket>> GetTicketsByAssignedEmployeeAsync(string empId);
         Task<List<Ticket>> GetTicketsByTicketTypeAsync(string ticketTypeId);
         Task AddTicketAsync(Ticket ticket);
-        Task UpdateTicketStatusAsync(string ticketId, string status);
+        Task UpdateTicketAsync(string ticketId, Ticket ticket);
         Task DeleteTicketAsync (string ticketId);
     }
 }

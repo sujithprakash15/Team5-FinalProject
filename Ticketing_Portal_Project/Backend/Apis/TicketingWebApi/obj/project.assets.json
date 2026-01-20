@@ -3643,11 +3643,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "D:\\sujith as team lead\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj",
+=======
+      "projectUniqueName": "C:\\Users\\user1\\Desktop\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj",
+>>>>>>> 173531be3165d28866734bb87dbe1c9a7d030baa
       "projectName": "TicketingWebApi",
-      "projectPath": "D:\\sujith as team lead\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj",
+      "projectPath": "C:\\Users\\user1\\Desktop\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj",
       "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
+<<<<<<< HEAD
       "outputPath": "D:\\sujith as team lead\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\obj\\",
+=======
+      "outputPath": "C:\\Users\\user1\\Desktop\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\obj\\",
+>>>>>>> 173531be3165d28866734bb87dbe1c9a7d030baa
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -3662,8 +3670,13 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
+<<<<<<< HEAD
             "D:\\sujith as team lead\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj": {
               "projectPath": "D:\\sujith as team lead\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj"
+=======
+            "C:\\Users\\user1\\Desktop\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj": {
+              "projectPath": "C:\\Users\\user1\\Desktop\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj"
+>>>>>>> 173531be3165d28866734bb87dbe1c9a7d030baa
             }
           }
         }
