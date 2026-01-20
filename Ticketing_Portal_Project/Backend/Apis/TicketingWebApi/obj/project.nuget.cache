@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "6md8Xp+qY8E=",
   "success": true,
   "projectFilePath": "D:\\sujith as team lead\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj",
-=======
-  "dgSpecHash": "2NKxQKGzGm4=",
-  "success": true,
-  "projectFilePath": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj",
->>>>>>> f2717eeb2ba0bfce073cfba4a4ff5689ed450280
   "expectedPackageFiles": [
     "C:\\Users\\user1\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
@@ -70,10 +64,10 @@
     {
       "code": "Undefined",
       "level": "Warning",
-      "message": "Problem reading the cache file C:\\Users\\user1\\Desktop\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
-      "projectPath": "C:\\Users\\user1\\Desktop\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj",
+      "message": "Problem reading the cache file D:\\sujith as team lead\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "D:\\sujith as team lead\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\user1\\Desktop\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj",
+      "filePath": "D:\\sujith as team lead\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj",
       "targetGraphs": []
     }
   ]
