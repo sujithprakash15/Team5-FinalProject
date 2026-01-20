@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { LoginService } from '../login-service';
-import { Employee } from '../models/Employee';
+import { Employee } from '../Models/Employee';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
