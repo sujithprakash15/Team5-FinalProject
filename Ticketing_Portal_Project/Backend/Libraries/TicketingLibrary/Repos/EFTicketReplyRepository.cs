@@ -53,25 +53,42 @@ public class EFTicketReplyRepository : ITicketReplyRepository
 
     public async Task<List<TicketReply>> GetAllRepliesAsync()
     {
+       
         List<TicketReply> replies = await context.TicketReplies.ToListAsync();
+         if(replies.Count == 0)
+        {
+            throw new TicketException("The replies list in currently empty",505);
+        }
         return replies;
     }
 
     public async Task<List<TicketReply>> GetRepliesByAssingedEmpId(string assignedempId)
     {
         List<TicketReply> replies = await (from r in context.TicketReplies where r.ReplyByAssignedEmpId == assignedempId select r).ToListAsync();
+        if(replies.Count == 0)
+        {
+            throw new TicketException("No replies found from Assigned Employee",506);
+        }
         return replies;
     }
 
     public async Task<List<TicketReply>> GetRepliesByEmpId(string empId)
     {
         List<TicketReply> replies = await (from r in context.TicketReplies where r.ReplyByCreatorEmpId == empId select r).ToListAsync();
+        if(replies.Count == 0)
+        {
+            throw new TicketException("No replies found from Employees",507);
+        }
         return replies;
     }
 
     public async Task<List<TicketReply>> GetRepliesByTicketId(string ticketId)
     {
         List<TicketReply> replies = await (from r in context.TicketReplies where r.TicketId == ticketId select r).ToListAsync();
+        if(replies.Count == 0)
+        {
+            throw new TicketException("No replies found for this Ticket",508);
+        }
         return replies;
 
     }
