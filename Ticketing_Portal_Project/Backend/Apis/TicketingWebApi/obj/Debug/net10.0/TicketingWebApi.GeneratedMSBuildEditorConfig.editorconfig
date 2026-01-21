@@ -19,13 +19,21 @@ build_property.TargetFrameworkIdentifier = .NETCoreApp
 build_property.TargetFrameworkVersion = v10.0
 build_property.RootNamespace = TicketingWebApi
 build_property.RootNamespace = TicketingWebApi
+<<<<<<< HEAD
+build_property.ProjectDir = D:\sujith as team lead\Team5-FinalProject\Ticketing_Portal_Project\Backend\Apis\TicketingWebApi\
+=======
 build_property.ProjectDir = D:\Team5-FinalProject\Ticketing_Portal_Project\Backend\Apis\TicketingWebApi\
+>>>>>>> 4d7e21303d9f09ea9e55b5786a690d9b76999f6a
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+<<<<<<< HEAD
+build_property.MSBuildProjectDirectory = D:\sujith as team lead\Team5-FinalProject\Ticketing_Portal_Project\Backend\Apis\TicketingWebApi
+=======
 build_property.MSBuildProjectDirectory = D:\Team5-FinalProject\Ticketing_Portal_Project\Backend\Apis\TicketingWebApi
+>>>>>>> 4d7e21303d9f09ea9e55b5786a690d9b76999f6a
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
