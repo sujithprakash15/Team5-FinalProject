@@ -42,8 +42,8 @@ public class EFTicketTypeRepository : ITicketTypeRepository
 
     public async Task DeleteTicketTypeAsync(string ticketTypeId)
     {
-        TicketType? ticketTypetodelete = await context
-            .TicketTypes.Include(t => t.Tickets)
+        TicketType? ticketTypetodelete = await context.TicketTypes
+            .Include(t => t.Tickets)
             .FirstOrDefaultAsync(t => t.TicketTypeId == ticketTypeId);
 
         if (ticketTypetodelete == null)
@@ -58,16 +58,17 @@ public class EFTicketTypeRepository : ITicketTypeRepository
         }
         else
         {
-            throw new TicketException(
-                "Cannot delete ticket type because it is assigned to tickets",
-                504
-            );
+            throw new TicketException("Cannot delete ticket type because it is assigned to tickets",504);
         }
     }
 
     public async Task<List<TicketType>> GetAllTicketTypesAsync()
     {
         List<TicketType> ticketTypes = await context.TicketTypes.ToListAsync();
+        if (ticketTypes.Count == 0)
+            {
+                throw new TicketException("No Ticket Types Found", 506);
+            }
         return ticketTypes;
     }
 
