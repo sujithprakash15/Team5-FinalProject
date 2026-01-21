@@ -1,29 +1,30 @@
 import { Component, inject } from '@angular/core';
-import { LoginService } from '../login-service';
-import { Employee } from '../models/Employee';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+
+import { LoginService } from '../login-service';
+import { Employee } from '../models/Employee';
 
 @Component({
   selector: 'app-login-component',
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './login-component.html',
-  styleUrl: './login-component.css',
+  styleUrl: './login-component.css'
 })
 export class LoginComponent {
 
   loginSvc: LoginService = inject(LoginService);
   router: Router = inject(Router);
 
-  user: Employee;
   empId: string;
   password: string;
+
+  user!: Employee;
   errMsg: string;
 
   constructor() {
-    this.user = new Employee("", "", "", "", "");
     this.empId = "";
     this.password = "";
     this.errMsg = "";
@@ -39,7 +40,7 @@ export class LoginComponent {
 
         sessionStorage.setItem("empId", this.user.empId);
         sessionStorage.setItem("role", this.user.role);
-
+        alert("Login succesfully")
         this.errMsg = "";
         this.router.navigate(['/']);
       },

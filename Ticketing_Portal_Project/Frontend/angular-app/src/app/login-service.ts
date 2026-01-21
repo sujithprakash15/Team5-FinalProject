@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Employee } from './models/Employee';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
 
@@ -12,19 +12,11 @@ export class LoginService {
 
   baseUrl: string = "http://localhost:5253/api/employee/";
 
-  login(empId: string, password: string): Observable<Employee> {
-
-    const employee: Employee = {
-      empId: empId,
-      empName: "",
-      password: password,
-      role: "",
-      deptId: ""
-    };
-
-    return this.http.post<Employee>(
-      this.baseUrl + "login",
-      employee
-    );
-  }
+ login(empId: string, password: string): Observable<Employee> {
+   console.log(empId);
+  return this.http.get<Employee>(
+    
+    this.baseUrl + empId + "/" + password
+  );
+}
 }
