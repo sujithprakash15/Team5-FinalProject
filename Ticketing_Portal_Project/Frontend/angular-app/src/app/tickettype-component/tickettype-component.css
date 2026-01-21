@@ -1,0 +1,126 @@
+/* PAGE TITLE */
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* ERROR MESSAGE */
+div[style*="color:red"] {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* FORM CONTAINER */
+.tickettype-form {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f9fbfc;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* FORM LABELS */
+.tickettype-form label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+  color: #34495e;
+}
+
+/* INPUTS & TEXTAREA */
+.tickettype-form input,
+.tickettype-form textarea {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.tickettype-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* BUTTON GROUP */
+.tickettype-form button {
+  margin-right: 10px;
+  margin-top: 15px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* BUTTON COLORS */
+.tickettype-form button:nth-child(1) {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.tickettype-form button:nth-child(2) {
+  background-color: #3498db;
+  color: white;
+}
+
+.tickettype-form button:nth-child(3) {
+  background-color: #f1c40f;
+  color: black;
+}
+
+.tickettype-form button:nth-child(4) {
+  background-color: #e74c3c;
+  color: white;
+}
+
+/* BUTTON HOVER EFFECT */
+.tickettype-form button:hover {
+  opacity: 0.9;
+}
+
+/* TABLE STYLING */
+h3 {
+  margin-top: 30px;
+  text-align: center;
+  color: #2c3e50;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background-color: white;
+}
+
+table th {
+  background-color: #34495e;
+  color: white;
+  padding: 10px;
+  text-align: left;
+}
+
+table td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* TABLE ROW HOVER */
+table tr:hover {
+  background-color: #f2f6fa;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .tickettype-form {
+    width: 95%;
+  }
+
+  table {
+    font-size: 13px;
+  }
+}
