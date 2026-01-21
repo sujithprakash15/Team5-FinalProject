@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TicketingWebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+335bd774490cb60d9ad2d6a2aa98b9f84a87687b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e8d4ccef83bdc7091d0d039f92ee75f139c6f527")]
 [assembly: System.Reflection.AssemblyProductAttribute("TicketingWebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TicketingWebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
