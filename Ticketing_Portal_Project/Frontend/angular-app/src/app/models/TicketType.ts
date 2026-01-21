@@ -1,5 +1,3 @@
-import { SLA } from './SLA';
-
 export class TicketType {
 
   public ticketTypeId: string;
