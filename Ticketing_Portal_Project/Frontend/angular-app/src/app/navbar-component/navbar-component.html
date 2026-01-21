@@ -1,0 +1,27 @@
+<nav class="main-nav">
+    @if(username) {
+        <div class="nav-container">
+            <div class="nav-links">
+                <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+                <a routerLink="/Course" routerLinkActive="active">Course</a>
+                <a routerLink="/Batch" routerLinkActive="active">Batch</a>
+                <a routerLink="/Student" routerLinkActive="active">Student</a>
+                <a routerLink="/Login" routerLinkActive="active">Login</a>
+                <a routerLink="/Logout" routerLinkActive="active">Logout</a>
+            </div>
+            <div class="user-info">
+                <span class="welcome-text">Welcome,</span>
+                <span class="username">{{username}}</span>
+            </div>
+        </div>
+    }
+    @else {
+        <div class="nav-container">
+            <div class="nav-links">
+                <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+                <a routerLink="/Register" routerLinkActive="active">Register</a>
+                <a routerLink="/Login" routerLinkActive="active">Login</a>
+            </div>
+        </div>
+    }
+</nav>
