@@ -117,7 +117,6 @@ namespace TicketingLibrary.Repos
         public async Task DeleteTicketAsync(string ticketId)
         {
             Ticket? ticketToDelete = await context.Tickets
-            // .Include("TicketReplies")
             .FirstOrDefaultAsync(t => t.TicketId == ticketId);
 
             if (ticketToDelete == null)
