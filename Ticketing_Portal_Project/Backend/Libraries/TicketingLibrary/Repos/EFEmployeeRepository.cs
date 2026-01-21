@@ -61,15 +61,15 @@ namespace TicketingLibrary.Repositories
             try
             {
                 Employee empToEdit = await GetEmployeeByIdAsync(empId);
-                empToEdit.EmpId = employee.EmpId;
                 empToEdit.EmpName = employee.EmpName;
                 empToEdit.Role = employee.Role;
                 empToEdit.Password = employee.Password;
+                empToEdit.DeptId = employee.DeptId;
                 await context.SaveChangesAsync();
             }
-            catch (Exception ex)
+            catch
             {
-                throw new TicketException(ex.Message, 503);
+                throw new TicketException("Employee Id does not exists so cannot update", 503);
             }
         }
         public async Task DeleteEmployeeAsync(string empId)
@@ -125,6 +125,7 @@ namespace TicketingLibrary.Repositories
             {
                 throw new TicketException(ex.Message, 599);
             }
+
         }
     }
 }

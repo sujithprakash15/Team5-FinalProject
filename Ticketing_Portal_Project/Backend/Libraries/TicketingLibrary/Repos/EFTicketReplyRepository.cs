@@ -35,9 +35,8 @@ public class EFTicketReplyRepository : ITicketReplyRepository
     public async Task DeleteReplyAsync(string replyId)
     {
 
-         TicketReply reply2del = await context.TicketReplies
-         .Include("Tickets")
-         .Include("Employee")
+         TicketReply? reply2del = await context.TicketReplies
+         .Include(t=>t.Ticket)
          .FirstOrDefaultAsync(s=>s.ReplyId == replyId);
 
         if(reply2del == null){
@@ -57,7 +56,7 @@ public class EFTicketReplyRepository : ITicketReplyRepository
         List<TicketReply> replies = await context.TicketReplies.ToListAsync();
          if(replies.Count == 0)
         {
-            throw new TicketException("The replies list in currently empty",505);
+            throw new TicketException("The replies list is currently empty",505);
         }
         return replies;
     }

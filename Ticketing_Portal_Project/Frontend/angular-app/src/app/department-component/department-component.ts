@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { DepartmentService } from '../department-service';
-import { Department } from '../models/department';
+import { Department } from '../models/Department';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -33,7 +33,10 @@ export class DepartmentComponent {
         console.log(response);
         this.errMsg = '';
       },
-      error: (err) => (this.errMsg = err.error),
+      error: (err) => {
+        this.errMsg = err.error;
+        console.log(err);
+      }
     });
   }
 
@@ -45,7 +48,10 @@ export class DepartmentComponent {
         this.newDepartment();
         this.loadDepartments();
       },
-      error: (err) => (this.errMsg = err.error),
+      error: (err) => {
+        this.errMsg = err.error;
+        console.log(err);
+      }
     });
   }
 
@@ -59,7 +65,10 @@ export class DepartmentComponent {
         this.department = response;
         this.errMsg = '';
       },
-      error: (err) => (this.errMsg = err.error),
+      error: (err) => {
+        this.errMsg = err.error;
+        console.log(err);
+      }
     });
   }
 
@@ -72,7 +81,10 @@ export class DepartmentComponent {
           this.errMsg = '';
           this.loadDepartments();
         },
-        error: (err) => (this.errMsg = err.error),
+        error: (err) => {
+        this.errMsg = err.error;
+        console.log(err);
+      }
       });
   }
 
@@ -85,7 +97,10 @@ export class DepartmentComponent {
           this.errMsg = '';
           this.loadDepartments();
         },
-        error: (err) => (this.errMsg = err.error),
+        error: (err) => {
+        this.errMsg = err.error;
+        console.log(err);
+      }
       });
   }
 }
