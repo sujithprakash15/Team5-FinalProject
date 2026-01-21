@@ -54,7 +54,6 @@ export class TicketreplyComponent {
       error: (err) => this.errMsg = err.error
     });
   }
-
   saveTicketreply() {
     this.ticketreplySvc.addTicketreply(this.ticketreply).subscribe({
       next: (response: any) => {
@@ -125,7 +124,6 @@ export class TicketreplyComponent {
       error: (err) => this.errMsg = err.error
     });
   }
-
   showRepliesbyAssignedEmpId(){
     this.ticketreplySvc.getrepliesbyAssignedempid(this.empId).subscribe({
       next: (response: any) => {
@@ -135,6 +133,4 @@ export class TicketreplyComponent {
       error: (err) => this.errMsg = err.error
     });
   }
-
-
 }

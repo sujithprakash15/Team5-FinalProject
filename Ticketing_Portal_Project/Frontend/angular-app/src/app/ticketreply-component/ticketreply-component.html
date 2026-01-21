@@ -181,26 +181,6 @@
       </p>
     </div>
 
-<<<<<<< HEAD
-  <tbody>
-    <tr *ngFor="let reply of ticketreplies">
-      <td>{{ reply.replyId }}</td>
-      <td>{{ reply.ticketId }}</td>
-      <td style="max-width: 300px; word-wrap: break-word;">
-        {{ reply.replyMessage }}
-      </td>
-      <td>{{ reply.replyByCreatorEmpId }}</td>
-      <td>{{ reply.replyByAssignedEmpId }}</td>
-      <td>{{ reply.replyCreatedDate | date:'short' }}</td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- NO DATA MESSAGE -->
-<div *ngIf="ticketreplies.length === 0 && !errMsg" style="text-align: center; padding: 20px; color: #666;">
-  <p>No ticket replies found.</p>
-  <p *ngIf="ticketId || empId">Try clearing your filters or add new replies.</p>
-=======
     <div *ngIf="ticketreplies.length > 0" class="ticketreplies-table-container">
       <table class="ticketreplies-table">
         <thead>
@@ -224,5 +204,4 @@
       </table>
     </div>
   </section>
->>>>>>> 9a5b22ff07c5a2900be2c85b222d87c9b477e1d9
 </div>
