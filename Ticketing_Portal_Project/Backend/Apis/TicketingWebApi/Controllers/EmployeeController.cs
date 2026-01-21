@@ -99,7 +99,7 @@ namespace TicketingWebApi.Controllers
                     return NotFound(ex.Message);
             }
         }
-        [HttpPost("login")]
+        [HttpGet("login/{empId}/{password}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)] 

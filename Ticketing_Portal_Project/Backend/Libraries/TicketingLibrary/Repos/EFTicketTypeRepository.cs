@@ -42,8 +42,8 @@ public class EFTicketTypeRepository : ITicketTypeRepository
 
     public async Task DeleteTicketTypeAsync(string ticketTypeId)
     {
-        TicketType? ticketTypetodelete = await context
-            .TicketTypes.Include(t => t.Tickets)
+        TicketType? ticketTypetodelete = await context.TicketTypes
+            .Include(t => t.Tickets)
             .FirstOrDefaultAsync(t => t.TicketTypeId == ticketTypeId);
 
         if (ticketTypetodelete == null)
