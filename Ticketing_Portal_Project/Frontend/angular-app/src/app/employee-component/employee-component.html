@@ -1,1 +1,137 @@
-<p>employee-component works!</p>
+<div class="employee-container">
+  <!-- Form Section -->
+  <section class="employee-form-section">
+    <div class="employee-form-header">
+      <div class="employee-form-icon">👨‍💼</div>
+      <div>
+        <h2 class="employee-form-title">Employee Management</h2>
+        <p class="employee-form-subtitle">Add, update, or remove employees</p>
+      </div>
+    </div>
+
+    <form class="employee-form" #employeeForm="ngForm">
+      <!-- Employee ID -->
+      <div class="employee-form-group">
+        <label for="empId" class="employee-form-label required">Employee ID</label>
+        <input
+          type="text"
+          id="empId"
+          [(ngModel)]="employee.empId"
+          name="empId"
+          class="employee-form-input"
+          placeholder="Enter employee ID (e.g., E001)" />
+      </div>
+      <!-- Employee Name -->
+      <div class="employee-form-group">
+        <label for="empName" class="employee-form-label required">Employee Name</label>
+        <input
+          type="text"
+          id="empName"
+          [(ngModel)]="employee.empName"
+          name="empName"
+          class="employee-form-input"
+          placeholder="Enter employee name" />
+      </div>
+      <!-- Password -->
+      <div class="employee-form-group">
+        <label for="password" class="employee-form-label required">Password</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="employee.password"
+          name="password"
+          class="employee-form-input"
+          placeholder="Enter password" />
+      </div>
+      <!-- Role -->
+      <div class="employee-form-group">
+        <label for="role" class="employee-form-label required">Role</label>
+        <input
+          type="text"
+          id="role"
+          [(ngModel)]="employee.role"
+          name="role"
+          class="employee-form-input"
+          placeholder="Enter employee role" />
+      </div>
+      <!-- Department ID -->
+      <div class="employee-form-group">
+        <label for="departmentId" class="employee-form-label required">Department ID</label>
+        <input
+          type="text"
+          id="departmentId"
+          [(ngModel)]="employee.departmentId"
+          name="departmentId"
+          class="employee-form-input"
+          placeholder="Enter department ID (e.g., D001)" />
+      </div>
+    </form>
+    <div class="employee-form-actions">
+      <button
+        type="button"
+        (click)="saveEmployee()"
+        class="employee-action-btn employee-add-btn">
+        Add Employee
+      </button>
+      <button
+        type="button"
+        (click)="updateEmployee()"
+        class="employee-action-btn employee-update-btn">
+        Update
+      </button>
+      <button
+        type="button"
+        (click)="getEmployee()"
+        class="employee-action-btn employee-show-btn">
+        Show
+      </button>
+      <button
+        type="button"
+        (click)="deleteEmployee()"
+        class="employee-action-btn employee-delete-btn">
+        Delete
+      </button>
+    </div>
+    <div *ngIf="errMsg" class="employee-error-container">
+      <div class="employee-error-message">
+        {{ errMsg }}
+      </div>
+    </div>
+  </section>
+  <!-- Table Section -->
+  <section class="employee-table-section">
+    <div class="employee-table-header">
+      <div class="employee-table-icon">📋</div>
+      <div>
+        <h2 class="employee-table-title">Employee List</h2>
+        <p class="employee-table-subtitle">List of all employees</p>
+      </div>
+    </div>
+    <div *ngIf="employees.length === 0" class="employee-empty-state">
+      <div class="employee-empty-icon">📭</div>
+      <p class="employee-empty-text">
+        No employees available. Add your first employee to get started.
+      </p>
+    </div>
+    <div *ngIf="employees.length > 0" class="employees-table-container">
+      <table class="employees-table">
+        <thead>
+          <tr>
+            <th>Employee ID</th>
+            <th>Employee Name</th>
+            <th>Role</th>
+            <th>Department ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees">
+            <td>{{ employee.empId }}</td>
+            <td>{{ employee.empName }}</td>
+            <td>{{ employee.role }}</td>
+            <td>{{ employee.departmentId }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

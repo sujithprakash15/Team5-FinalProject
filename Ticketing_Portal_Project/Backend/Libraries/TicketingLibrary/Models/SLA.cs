@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace TicketingLibrary.Models
 {
@@ -20,6 +21,7 @@ namespace TicketingLibrary.Models
         public int ResponseTime { get; set; }
         public int ResolutionHours { get; set; }
 
+        // [JsonIgnore]
         public virtual ICollection<TicketType> TicketTypes { get; set; } = new List<TicketType>();
     }
 }

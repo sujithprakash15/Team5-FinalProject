@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace TicketingLibrary.Models
 {
@@ -33,15 +34,19 @@ namespace TicketingLibrary.Models
         
         public string? AssignedToEmpId { get; set; }
 
+        // [JsonIgnore]
         [ForeignKey("TicketTypeId")]
         public virtual TicketType? TicketType { get; set; }
 
+        // [JsonIgnore]
         [ForeignKey("CreatedByEmpId")]
         public virtual Employee? CreatedByEmployee { get; set; }
 
+        // [JsonIgnore]
         [ForeignKey("AssignedToEmpId")]
         public virtual Employee? AssignedToEmployee { get; set; }
 
+        // [JsonIgnore]
         public virtual ICollection<TicketReply> TicketReplies { get; set; } = new List<TicketReply>();
     }
 }

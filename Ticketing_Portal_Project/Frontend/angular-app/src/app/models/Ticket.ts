@@ -1,5 +1,4 @@
 import { TicketType } from './TicketType';
-import { Employee } from './Employee';
 
 export class Ticket {
   public ticketId: string;
