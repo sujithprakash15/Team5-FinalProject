@@ -55,17 +55,21 @@ namespace TicketingLibrary.Repositories
         }
         public async Task UpdateDepartmentAsync(string deptId, Department department)
         {
-            Department deptToEdit = await GetDepartmentByIdAsync(deptId);
             try
             {
+                if (department == null)
+                {
+                    throw new TicketException("You have given no input", 400);
+                }
+                Department deptToEdit = await GetDepartmentByIdAsync(deptId);
                 deptToEdit.DeptName = department.DeptName;
                 deptToEdit.Description = department.Description;
 
                 await context.SaveChangesAsync();
             }
-            catch (Exception ex)
+            catch
             {
-                throw new TicketException(ex.Message, 503);
+                throw new TicketException("You have given wrong department id or it is too big", 503);
             }
         }
         public async Task DeleteDepartmentAsync(string deptId)

@@ -35,9 +35,8 @@ public class EFTicketReplyRepository : ITicketReplyRepository
     public async Task DeleteReplyAsync(string replyId)
     {
 
-         TicketReply reply2del = await context.TicketReplies
-         .Include("Tickets")
-         .Include("Employee")
+         TicketReply? reply2del = await context.TicketReplies
+         .Include(t=>t.Ticket)
          .FirstOrDefaultAsync(s=>s.ReplyId == replyId);
 
         if(reply2del == null){

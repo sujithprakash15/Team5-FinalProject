@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TicketingLibrary;
 using TicketingLibrary.Interfaces;
 using TicketingLibrary.Models;
 
