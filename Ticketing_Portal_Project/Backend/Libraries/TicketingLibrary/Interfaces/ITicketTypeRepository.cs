@@ -1,6 +1,5 @@
 using System;
 using TicketingLibrary.Models;
-
 namespace TicketingLibrary.Interfaces;
 
 public interface ITicketTypeRepository
