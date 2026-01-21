@@ -37,6 +37,8 @@ namespace TicketingLibrary.Repositories
         {
             try
             {
+            //    if (employee.EmpName == null || employee.EmpId == null) 
+            //         throw new TicketException("No values entered", 400);
                 await context.Employees.AddAsync(employee);
                 await context.SaveChangesAsync();
             }
@@ -49,11 +51,13 @@ namespace TicketingLibrary.Repositories
                     {
                         case 2627: 
                             throw new TicketException("Employee ID already exists", 501);
+                            // throw new TicketException("No values entered", 501);
                         default:
                             throw new TicketException(sqlException.Message, 599);
+                            // throw new Exception("You Enter No Values");
                     }
                 }
-                throw;
+                throw new Exception("You Enter No Values");
             }
         }
         public async Task UpdateEmployeeAsync(string empId, Employee employee)
@@ -61,6 +65,8 @@ namespace TicketingLibrary.Repositories
             try
             {
                 Employee empToEdit = await GetEmployeeByIdAsync(empId);
+                if (employee.EmpName == null || employee.EmpId == null) 
+                    throw new TicketException("No values entered", 507);
                 empToEdit.EmpName = employee.EmpName;
                 empToEdit.Role = employee.Role;
                 empToEdit.Password = employee.Password;

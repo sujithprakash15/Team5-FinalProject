@@ -12,6 +12,7 @@ import { EmployeeComponent } from './employee-component/employee-component';
 import { NavbarComponent } from './navbar-component/navbar-component';
 
 export const routes: Routes = [
+     {path: '', component: HomeComponent},
      {path: 'login', component: LoginComponent },
      {path: 'logout', component: LogoutComponent },
      {path: 'ticket', component: TicketComponent },

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TicketingLibrary;
@@ -9,6 +10,7 @@ namespace TicketingWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class EmployeeController : ControllerBase
     {
         IEmployeeRepository employeeRepository;
@@ -93,7 +95,7 @@ namespace TicketingWebApi.Controllers
             }
             catch (TicketException ex)
             {
-                if (ex.ErrorNumber == 503)
+                if (ex.ErrorNumber == 503 || ex.ErrorNumber == 507)
                     return BadRequest(ex.Message);
                 else
                     return NotFound(ex.Message);
