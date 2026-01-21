@@ -1,11 +1,12 @@
 using System.Text;
-using TicketingLibrary.Interfaces;
-using TicketingLibrary.Models;
-using TicketingLibrary.Repos;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
+using TicketingLibrary.Interfaces;
+using TicketingLibrary.Models;
+using TicketingLibrary.Repos;
+using TicketingLibrary.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

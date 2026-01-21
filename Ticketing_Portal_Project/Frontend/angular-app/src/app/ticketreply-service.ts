@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { TicketReply } from './Models/TicketReply';
+import { TicketReply } from './models/TicketReply';
 import { Observable } from 'rxjs';
 import { tick } from '@angular/core/testing';
 

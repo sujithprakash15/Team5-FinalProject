@@ -1,0 +1,19 @@
+<div class="login-box">
+
+  <input
+    type="text"
+    placeholder="Employee ID"
+    [(ngModel)]="empId" />
+
+  <input
+    type="password"
+    placeholder="Password"
+    [(ngModel)]="password" />
+
+  <button (click)="login()">Login</button>
+
+  <div class="error" *ngIf="errMsg">
+    {{ errMsg }}
+  </div>
+
+</div>

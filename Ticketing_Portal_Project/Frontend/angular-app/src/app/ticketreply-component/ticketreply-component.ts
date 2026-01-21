@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TicketreplyService } from '../ticketreply-service';
-import { TicketReply } from '../Models/TicketReply';
+import { TicketReply } from '../models/TicketReply';
 
 @Component({
   selector: 'app-ticketreply-component',
@@ -13,18 +13,34 @@ import { TicketReply } from '../Models/TicketReply';
 export class TicketreplyComponent {
 
   ticketreplySvc: TicketreplyService = inject(TicketreplyService);
+  ticketSvc:TicketService = inject(TicketService);
+  tickets = [];
   ticketreplies = [];
   ticketreply: TicketReply;
+  ticketId: string;
+  empId: string;
   errMsg: string;
 
   constructor() {
 
     this.ticketreplies = [];
     this.ticketreply = new TicketReply("", "", "", "", "");
+    this.ticketId="";
+    this.empId="";
     this.errMsg = "";
     this.showAllTicketreplies();
   }
 
+  showAllTickets(){
+    this.ticketSvc.showallTickets().subscribe({
+      next:(response:any)=>{
+        this.tickets=response;
+        this.errMsg="";
+      },
+      error: (err) => this.errMsg = err.error
+  });
+  }
+ 
   showAllTicketreplies() {
     this.ticketreplySvc.showallTicketreplies().subscribe({
       next: (response: any) => {
@@ -84,7 +100,37 @@ export class TicketreplyComponent {
     });
   }
 
-    
+  showRepliesByTicketId(){
+    this.ticketreplySvc.getrepliesbyTicketid(this.ticketId).subscribe({
+      next: (response: any) => {
+        this.ticketreplies = response;
+        this.errMsg = "";
+      }
+      ,
+      error: (err) => this.errMsg = err.error
+    });
+  }
+
+  showRepliesByCreatorEmpId(){
+    this.ticketreplySvc.getrepliesbyCreatorempid(this.empId).subscribe({
+      next: (response: any) => {
+        this.ticketreplies = response;
+        this.errMsg = "";
+      }
+      ,
+      error: (err) => this.errMsg = err.error
+    });
+  }
+
+  showRepliesbyAssignedEmpId(){
+    this.ticketreplySvc.getrepliesbyAssignedempid(this.empId).subscribe({
+      next: (response: any) => {
+        this.ticketreplies = response;
+        this.errMsg = "";
+      },
+      error: (err) => this.errMsg = err.error
+    });
+  }
 
 
 }

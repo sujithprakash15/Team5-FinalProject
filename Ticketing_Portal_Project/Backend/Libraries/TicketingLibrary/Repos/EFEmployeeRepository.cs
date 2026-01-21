@@ -13,13 +13,18 @@ namespace TicketingLibrary.Repositories
         EYTicketPortalContext context = new EYTicketPortalContext();
         public async Task<List<Employee>> GetAllEmployeesAsync()
         {
-            return await context.Employees.ToListAsync();
+            List<Employee> employees = await context.Employees.ToListAsync();
+            if (employees.Count == 0)
+            {
+                throw new TicketException("No employees found", 505);
+            }
+            return employees;
         }
         public async Task<Employee> GetEmployeeByIdAsync(string empId)
         {
             try
             {
-                Employee employee = await context.Employees
+                Employee? employee = await context.Employees
                     .FirstAsync(e => e.EmpId == empId);
                 return employee;
             }
@@ -37,12 +42,12 @@ namespace TicketingLibrary.Repositories
             }
             catch (DbUpdateException ex)
             {
-                SqlException sqlException = ex.InnerException as SqlException;
+                SqlException? sqlException = ex.InnerException as SqlException;
                 if (sqlException != null)
                 {
                     switch (sqlException.Number)
                     {
-                        case 2627: // PK / Unique constraint
+                        case 2627: 
                             throw new TicketException("Employee ID already exists", 501);
                         default:
                             throw new TicketException(sqlException.Message, 599);
@@ -56,20 +61,20 @@ namespace TicketingLibrary.Repositories
             try
             {
                 Employee empToEdit = await GetEmployeeByIdAsync(empId);
-                empToEdit.EmpId = employee.EmpId;
                 empToEdit.EmpName = employee.EmpName;
                 empToEdit.Role = employee.Role;
                 empToEdit.Password = employee.Password;
+                empToEdit.DeptId = employee.DeptId;
                 await context.SaveChangesAsync();
             }
-            catch (Exception ex)
+            catch
             {
-                throw new TicketException(ex.Message, 503);
+                throw new TicketException("Employee Id does not exists so cannot update", 503);
             }
         }
         public async Task DeleteEmployeeAsync(string empId)
         {
-             Employee empToDelete = await context.Employees
+             Employee? empToDelete = await context.Employees
                 .Include(e => e.CreatedTickets)
                 .Include(e => e.AssignedTickets)
                 .Include(e => e.CreatorReplies)
@@ -120,6 +125,7 @@ namespace TicketingLibrary.Repositories
             {
                 throw new TicketException(ex.Message, 599);
             }
+
         }
     }
 }
