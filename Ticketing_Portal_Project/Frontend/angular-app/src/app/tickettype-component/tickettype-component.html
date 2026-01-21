@@ -1,0 +1,58 @@
+<h2>Ticket Type Management</h2>
+
+<!-- ERROR MESSAGE -->
+<div style="color:red" *ngIf="errMsg">
+    {{ errMsg }}
+</div>
+
+<hr />
+
+<!-- TICKET TYPE FORM -->
+<div class="tickettype-form">
+
+    <label>Ticket Type ID</label>
+    <input type="text" [(ngModel)]="ticketType.ticketTypeId" />
+
+    <label>Type Name</label>
+    <input type="text" [(ngModel)]="ticketType.typeName" />
+
+    <label>Description</label>
+    <textarea [(ngModel)]="ticketType.description"></textarea>
+
+    <label>SLA ID</label>
+    <input type="text" [(ngModel)]="ticketType.slaId" />
+
+    <label>Department ID</label>
+    <input type="text" [(ngModel)]="ticketType.deptId" />
+
+    <br /><br />
+
+    <button (click)="saveTicketType()">Add</button>
+    <button (click)="getTicketType()">Search</button>
+    <button (click)="updateTicketType()">Update</button>
+    <button (click)="deleteTicketType()">Delete</button>
+
+</div>
+
+<hr />
+
+<!-- TICKET TYPE LIST -->
+<h3>All Ticket Types</h3>
+
+<table border="1" width="100%">
+    <tr>
+        <th>Ticket Type ID</th>
+        <th>Type Name</th>
+        <th>Description</th>
+        <th>SLA ID</th>
+        <th>Department ID</th>
+    </tr>
+
+    <tr *ngFor="let tt of ticketTypes">
+        <td>{{ tt.ticketTypeId }}</td>
+        <td>{{ tt.typeName }}</td>
+        <td>{{ tt.description }}</td>
+        <td>{{ tt.slaId }}</td>
+        <td>{{ tt.deptId }}</td>
+    </tr>
+</table>

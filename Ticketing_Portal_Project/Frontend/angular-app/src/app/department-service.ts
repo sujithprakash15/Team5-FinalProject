@@ -2,6 +2,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Department } from './models/Department';
+<<<<<<< HEAD
+
+=======
+>>>>>>> 8fed890133fe179b35fc05436136a630c3bc3ece
  
 @Injectable({
   providedIn: 'root',
