@@ -47,11 +47,11 @@ export class TicketreplyService {
   }
 
   getrepliesbyAssignedempid(replybyassignedempId:string):Observable<TicketReply[]>{
-    return this.http.get<TicketReply[]> (this.baseUrl +"assigned"+ replybyassignedempId,this.httpOptions);
+    return this.http.get<TicketReply[]> (this.baseUrl +"assigned/"+ replybyassignedempId,this.httpOptions);
   }
 
   getrepliesbyCreatorempid(replybycreatorempId:string):Observable<TicketReply[]>{
-    return this.http.get<TicketReply[]> (this.baseUrl +"emp"+ replybycreatorempId,this.httpOptions);
+    return this.http.get<TicketReply[]> (this.baseUrl +"emp/"+ replybycreatorempId,this.httpOptions);
   }
 
 

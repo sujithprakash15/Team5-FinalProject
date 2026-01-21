@@ -3,6 +3,8 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TicketreplyService } from '../ticketreply-service';
 import { TicketReply } from '../models/TicketReply';
+import { TicketService } from '../ticket-service';
+import { Ticket } from '../models/Ticket';
 
 @Component({
   selector: 'app-ticketreply-component',
@@ -14,12 +16,13 @@ export class TicketreplyComponent {
 
   ticketreplySvc: TicketreplyService = inject(TicketreplyService);
   ticketSvc:TicketService = inject(TicketService);
-  tickets = [];
-  ticketreplies = [];
+  tickets:Ticket [] = [];
+  ticketreplies:TicketReply [] = [];
   ticketreply: TicketReply;
   ticketId: string;
   empId: string;
   errMsg: string;
+  // creator : any = sessionStorage.getItem("empId");
 
   constructor() {
 
@@ -32,7 +35,7 @@ export class TicketreplyComponent {
   }
 
   showAllTickets(){
-    this.ticketSvc.showallTickets().subscribe({
+    this.ticketSvc.getAllTickets().subscribe({
       next:(response:any)=>{
         this.tickets=response;
         this.errMsg="";
