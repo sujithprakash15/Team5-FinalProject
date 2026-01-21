@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { DepartmentService } from '../department-service';
-import { Department } from '../models/department';
+import { Department } from '../models/Department';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
