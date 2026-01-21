@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { EmployeeService } from '../employee-service';
+import { EmployeeService } from '../employee-service'; 
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Employee } from '../models/Employee';

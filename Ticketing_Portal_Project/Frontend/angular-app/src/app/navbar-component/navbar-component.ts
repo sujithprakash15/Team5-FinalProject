@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
 
+
 @Component({
   selector: 'app-navbar-component',
   standalone: true,
@@ -9,5 +10,5 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
   styleUrl: './navbar-component.css',
 })
 export class NavbarComponent {
-  username = sessionStorage.getItem("username");
+  username = sessionStorage.getItem("empId");
 }

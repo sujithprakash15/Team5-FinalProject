@@ -8,7 +8,7 @@ import { Employee } from './models/Employee';
 })
 export class RegisterService {
   http:HttpClient = inject(HttpClient);
-  baseUrl:string = "http://localhost:5170/api/employee/";
+  baseUrl:string = "http://localhost:5253/api/employee/";
   register(user:Employee):Observable<any>{
     console.log(user);
     

@@ -47,6 +47,7 @@ export class TicketreplyComponent {
   showAllTicketreplies() {
     this.ticketreplySvc.showallTicketreplies().subscribe({
       next: (response: any) => {
+        console.log(response);
         this.ticketreplies = response;
         this.errMsg = "";
       },

@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { RegisterService } from '../register-service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Employee } from '../Models/Employee';
+import { Employee } from '../models/Employee';
 
 @Component({
   selector: 'app-register-component',
@@ -21,7 +21,6 @@ export class RegisterComponent {
   register() {
     this.regsiterSvc.register(this.user).subscribe({
       next: (response: any) => {
-        // console.log(response);
         alert("New user registered");
         this.errMsg = "";
       },

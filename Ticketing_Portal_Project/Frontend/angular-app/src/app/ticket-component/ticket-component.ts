@@ -30,6 +30,7 @@ export class TicketComponent {
   showAllTickets(): void {
     this.ticketSvc.getAllTickets().subscribe({
       next: (response: Ticket[]) => {
+        console.log(response);
         this.tickets = response;
         this.errMsg = "";
       },

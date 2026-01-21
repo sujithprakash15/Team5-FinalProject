@@ -1,19 +1,66 @@
-<div class="login-box">
-
-  <input
-    type="text"
-    placeholder="Employee ID"
-    [(ngModel)]="empId" />
-
-  <input
-    type="password"
-    placeholder="Password"
-    [(ngModel)]="password" />
-
-  <button (click)="login()">Login</button>
-
-  <div class="error" *ngIf="errMsg">
-    {{ errMsg }}
-  </div>
-
+<div class="login-container">
+<!-- Login Section -->
+<section class="form-section">
+<div class="form-header">
+<div class="form-icon">🔐</div>
+<div>
+<h2 class="form-title">Employee Login</h2>
+<p class="form-subtitle">Sign in to access the ticketing portal</p>
 </div>
+</div>
+ 
+    <form class="login-form" #loginForm="ngForm">
+<div class="form-group">
+<label class="form-label required">Employee ID</label>
+<input
+
+          type="text"
+
+          class="form-input"
+
+          placeholder="Enter Employee ID"
+
+          [(ngModel)]="empId"
+
+          name="empId" />
+</div>
+ 
+      <div class="form-group">
+<label class="form-label required">Password</label>
+<input
+
+          type="password"
+
+          class="form-input"
+
+          placeholder="Enter Password"
+
+          [(ngModel)]="password"
+
+          name="password" />
+</div>
+</form>
+ 
+    <div class="form-actions">
+<button
+
+        type="button"
+
+        class="action-btn add-btn"
+
+        (click)="login()">
+
+        Login
+</button>
+</div>
+ 
+    <div *ngIf="errMsg" class="error-container">
+<div class="error-message">
+
+        {{ errMsg }}
+</div>
+</div>
+</section>
+</div>
+
+ 

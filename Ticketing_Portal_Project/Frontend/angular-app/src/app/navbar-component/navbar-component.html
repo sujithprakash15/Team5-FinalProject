@@ -1,6 +1,6 @@
 <nav class="main-nav">
 
-    @if(empId) {
+    @if(username) {
 
         <div class="nav-container">
 
@@ -11,9 +11,19 @@
                    Home
                 </a>
 
+                <a routerLink="/employee"
+                   routerLinkActive="active">
+                   Employee
+                </a>
+
                 <a routerLink="/ticket"
                    routerLinkActive="active">
                    Ticket
+                </a>
+
+                <a routerLink="/ticketreply"
+                   routerLinkActive="active">
+                   Ticket Reply
                 </a>
 
                 <a routerLink="/tickettype"
@@ -39,7 +49,7 @@
 
             <div class="user-info">
                 <span class="welcome-text">Welcome,</span>
-                <span class="username">{{ empId }}</span>
+                <span class="empId">{{ username }}</span>
             </div>
 
         </div>
