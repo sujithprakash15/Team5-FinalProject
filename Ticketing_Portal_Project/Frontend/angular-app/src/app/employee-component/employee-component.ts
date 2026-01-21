@@ -1,15 +1,15 @@
 import { Component, inject } from '@angular/core';
-import { EmployeeService } from '../employee-service';
-import { Employee } from '../models/Employee'; 
+import { EmployeeService } from '../employee-service'; 
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Employee } from '../models/Employee';
 
 @Component({
   selector: 'app-employee-component',
   standalone: true,
   imports: [FormsModule, CommonModule],
-  templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.css'],
+  templateUrl: './employee-component.html',
+  styleUrl: './employee-component.css',
 })
 export class EmployeeComponent {
   employeeSvc: EmployeeService = inject(EmployeeService); 

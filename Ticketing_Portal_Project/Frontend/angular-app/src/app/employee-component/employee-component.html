@@ -56,12 +56,12 @@
       </div>
       <!-- Department ID -->
       <div class="employee-form-group">
-        <label for="departmentId" class="employee-form-label required">Department ID</label>
+        <label for="deptId" class="employee-form-label required">Department ID</label>
         <input
           type="text"
-          id="departmentId"
-          [(ngModel)]="employee.departmentId"
-          name="departmentId"
+          id="deptId"
+          [(ngModel)]="employee.deptId"
+          name="deptId"
           class="employee-form-input"
           placeholder="Enter department ID (e.g., D001)" />
       </div>
@@ -128,7 +128,7 @@
             <td>{{ employee.empId }}</td>
             <td>{{ employee.empName }}</td>
             <td>{{ employee.role }}</td>
-            <td>{{ employee.departmentId }}</td>
+            <td>{{ employee.deptId }}</td>
           </tr>
         </tbody>
       </table>
