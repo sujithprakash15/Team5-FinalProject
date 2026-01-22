@@ -9,6 +9,10 @@ select * from Department
 
 -- 2.Employee Sample Data
 INSERT INTO Employee (EmpId, EmpName, Password, Role, DeptId) VALUES
+('E007', 'Selva', 'Sel@123', 'User', 'D003');
+
+('E006', 'Sujith', 'Suj@123', 'Admin', 'D003');
+('E005', 'Sri harini', 'Sri@123', 'Admin', 'D004');
 ('E001', 'Arun Kumar', 'Arun@123', 'Engineer', 'D001'),
 ('E002', 'Priya Sharma', 'Priya@123', 'HR Executive', 'D002'),
 ('E003', 'Rahul Menon', 'Rahul@123', 'Accountant', 'D003'),

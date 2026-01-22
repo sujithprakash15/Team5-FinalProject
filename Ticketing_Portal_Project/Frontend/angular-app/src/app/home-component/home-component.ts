@@ -14,6 +14,9 @@ import { DepartmentService } from '../department-service';
   styleUrls: ['./home-component.css']
 })
 export class HomeComponent implements OnInit {
+
+  authSvc: AuthService = inject(AuthService);
+  token: string = "";
   totalTickets: number = 0;
   totalEmployees: number = 0;
   totalTicketTypes: number = 0;
@@ -25,7 +28,18 @@ export class HomeComponent implements OnInit {
     private employeeService: EmployeeService,
     private ticketTypeService: TickettypeService,
     private departmentService: DepartmentService
-  ) {}
+  ) {
+     this.authSvc.getToken().subscribe({
+      next: (response: any) => {
+        this.token = response;
+        sessionStorage.setItem("token", this.token);
+        console.log(this.token);
+      },
+      error: (err) => { alert(err.message); console.log(err); }
+    });
+  }
+
+
 
   ngOnInit(): void {
     this.loadStats();
@@ -33,25 +47,23 @@ export class HomeComponent implements OnInit {
   }
 
   loadStats(): void {
-    // Load ticket count
     this.ticketService.getAllTickets().subscribe({
       next: (tickets) => this.totalTickets = tickets.length,
       error: (err) => console.error('Error loading tickets:', err)
     });
 
-    // Load employee count
     this.employeeService.getAllEmployees().subscribe({
       next: (employees) => this.totalEmployees = employees.length,
       error: (err) => console.error('Error loading employees:', err)
     });
 
-    // Load ticket type count
+
     this.ticketTypeService.getAllTicketTypes().subscribe({
       next: (types) => this.totalTicketTypes = types.length,
       error: (err) => console.error('Error loading ticket types:', err)
     });
 
-    // Load department count
+    
     this.departmentService.getAllDepartments().subscribe({
       next: (depts) => this.totalDepartments = depts.length,
       error: (err) => console.error('Error loading departments:', err)
@@ -61,7 +73,6 @@ export class HomeComponent implements OnInit {
   loadRecentTickets(): void {
     this.ticketService.getAllTickets().subscribe({
       next: (tickets) => {
-        // Sort by date and get recent 6 tickets
         this.recentTickets = tickets
           .sort((a: any, b: any) => 
             new Date(b.ticketCreatedDate).getTime() - new Date(a.ticketCreatedDate).getTime()

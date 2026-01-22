@@ -1,14 +1,6 @@
 <div class="ticketreply-container">
   <!-- Form Section -->
   <section class="form-section">
-    <div class="form-header">
-      <div class="form-icon">💬</div>
-      <div>
-        <h2 class="form-title">Ticket Reply Management</h2>
-        <p class="form-subtitle">Add, update, or remove ticket replies</p>
-      </div>
-    </div>
-
     <form class="ticketreply-form" #replyForm="ngForm">
       <div class="form-row">
         <div class="form-group">
@@ -89,10 +81,6 @@
 
       <button type="button" class="action-btn delete-btn" (click)="deleteTicketreply()">
         Delete
-      </button>
-
-      <button type="button" class="action-btn clear-btn" (click)="newTicketreply()">
-        Clear
       </button>
     </div>
 
@@ -196,7 +184,7 @@
           <tr *ngFor="let reply of ticketreplies">
             <td class="reply-id">{{ reply.replyId }}</td>
             <td class="ticket-id">{{ reply.ticketId }}</td>
-            <td class="message">{{ reply.replyMessage }}</td>
+            <td>{{ reply.replyMessage }}</td>
             <td class="creator">{{ reply.replyByCreatorEmpId }}</td>
             <td class="assigned">{{ reply.replyByAssignedEmpId }}</td>
           </tr>

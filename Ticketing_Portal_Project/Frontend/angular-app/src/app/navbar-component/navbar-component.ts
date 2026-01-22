@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
+import { EmployeeService } from '../employee-service';
 
 
 @Component({
@@ -10,5 +11,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
   styleUrl: './navbar-component.css',
 })
 export class NavbarComponent {
+  employeeSvc: EmployeeService = inject(EmployeeService);
   username = sessionStorage.getItem("empId");
 }
+
