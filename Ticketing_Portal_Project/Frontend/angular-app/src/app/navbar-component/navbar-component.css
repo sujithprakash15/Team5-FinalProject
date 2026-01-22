@@ -1,6 +1,9 @@
 /* Main Navigation Styles */
 .main-nav {
-    background-color: #0f8ff1;
+    /* background-color: #660ff1; */
+    background: #020024;
+    background-image: radial-gradient( circle 315px at 8% 51.4%,  #6c49ec 0%, rgb(164, 94, 199) 100.3% );
+/* background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%); */
     color: white;
     padding: 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -40,7 +43,7 @@
 }
 
 .nav-links a.active {
-    background-color: #3498db;
+    background-color: #a44eef;
     color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
