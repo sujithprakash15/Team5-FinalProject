@@ -57,7 +57,11 @@ public class EYTicketPortalContext : DbContext
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(@"data source=localhost\SQLEXPRESS; database=EYTicketPortalDB2; user id=sa; password=User%2025; Trust Server Certificate=true");
+       optionsBuilder.UseSqlServer(
+            @"Server=localhost\SQLEXPRESS;
+            Database=EYTicketPortalDB2;
+            Trusted_Connection=True;
+            TrustServerCertificate=True;");
     }
 
 }

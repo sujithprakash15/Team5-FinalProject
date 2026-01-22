@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ticket } from './models/Ticket';
+import { TicketType } from './models/TicketType';
+import { Employee } from './models/Employee';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +17,6 @@ export class TicketService {
 
   constructor() {
     this.token = sessionStorage.getItem("token");
-
     this.httpOptions = {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + this.token
@@ -33,24 +34,25 @@ export class TicketService {
 
   getTicketsByEmployee(empId: string): Observable<Ticket[]> {
     return this.http.get<Ticket[]>(
-      this.baseUrl + "byemployee/" + empId,
+      this.baseUrl + "ByEmployee/" + empId,
       this.httpOptions
     );
   }
 
   getTicketsByAssignedEmployee(empId: string): Observable<Ticket[]> {
     return this.http.get<Ticket[]>(
-      this.baseUrl + "byassigned/" + empId,
+      this.baseUrl + "ByAssignedEmployee/" + empId,
       this.httpOptions
     );
   }
 
   getTicketsByTicketType(ticketTypeId: string): Observable<Ticket[]> {
     return this.http.get<Ticket[]>(
-      this.baseUrl + "bytickettype/" + ticketTypeId,
+      this.baseUrl + "ByTicketType/" + ticketTypeId,
       this.httpOptions
     );
   }
+
 
   addTicket(ticket: Ticket): Observable<Ticket> {
     return this.http.post<Ticket>(
@@ -71,6 +73,19 @@ export class TicketService {
   deleteTicket(ticketId: string): Observable<any> {
     return this.http.delete(
       this.baseUrl + ticketId,
+      this.httpOptions
+    );
+  }
+  getAllTicketTypes(): Observable<TicketType[]> {
+  return this.http.get<TicketType[]>(
+    'http://localhost:5253/api/tickettype', 
+    this.httpOptions
+  );
+}
+
+  getAllEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(
+      'http://localhost:5253/api/employee',
       this.httpOptions
     );
   }
