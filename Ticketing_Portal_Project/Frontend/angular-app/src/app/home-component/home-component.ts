@@ -1,15 +1,22 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AuthService } from '../auth-service';
 import { NavbarComponent } from "../navbar-component/navbar-component";
+import { TicketService } from '../ticket-service';
+import { EmployeeService } from '../employee-service';
+import { TickettypeService } from '../tickettype-service';
+import { DepartmentService } from '../department-service';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-home-component',
   standalone: true,
   imports: [NavbarComponent],
   templateUrl: './home-component.html',
   styleUrls: ['./home-component.css']
 })
 export class HomeComponent implements OnInit {
+
+  authSvc: AuthService = inject(AuthService);
+  token: string = "";
   totalTickets: number = 0;
   totalEmployees: number = 0;
   totalTicketTypes: number = 0;
@@ -21,7 +28,18 @@ export class HomeComponent implements OnInit {
     private employeeService: EmployeeService,
     private ticketTypeService: TickettypeService,
     private departmentService: DepartmentService
-  ) {}
+  ) {
+     this.authSvc.getToken().subscribe({
+      next: (response: any) => {
+        this.token = response;
+        sessionStorage.setItem("token", this.token);
+        console.log(this.token);
+      },
+      error: (err) => { alert(err.message); console.log(err); }
+    });
+  }
+
+
 
   ngOnInit(): void {
     this.loadStats();
