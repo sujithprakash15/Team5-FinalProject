@@ -92,4 +92,5 @@ export class TickettypeComponent {
         error: (err) => (this.errMsg = err.error),
       });
   }
+  
 }

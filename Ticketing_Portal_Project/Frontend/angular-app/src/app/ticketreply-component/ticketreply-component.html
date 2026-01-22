@@ -54,7 +54,7 @@
           <input
             type="text"
             id="replybycreatorempId"
-            [(ngModel)]="ticketreply.replybycreatorempId"
+            [(ngModel)]="ticketreply.replyByCreatorEmpId"
             name="replybycreatorempId"
             class="form-input"
             placeholder="Enter creator employee ID" />
@@ -65,7 +65,7 @@
           <input
             type="text"
             id="replybyassignedempId"
-            [(ngModel)]="ticketreply.replybyassignedempId"
+            [(ngModel)]="ticketreply.replyByAssignedEmpId"
             name="replybyassignedempId"
             class="form-input"
             placeholder="Enter assigned employee ID" />
@@ -197,8 +197,8 @@
             <td class="reply-id">{{ reply.replyId }}</td>
             <td class="ticket-id">{{ reply.ticketId }}</td>
             <td class="message">{{ reply.replyMessage }}</td>
-            <td class="creator">{{ reply.replybycreatorempId }}</td>
-            <td class="assigned">{{ reply.replybyassignedempId }}</td>
+            <td class="creator">{{ reply.replyByCreatorEmpId }}</td>
+            <td class="assigned">{{ reply.replyByAssignedEmpId }}</td>
           </tr>
         </tbody>
       </table>

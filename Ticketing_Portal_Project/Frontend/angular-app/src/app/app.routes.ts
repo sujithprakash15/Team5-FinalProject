@@ -20,5 +20,6 @@ export const routes: Routes = [
      {path: 'sla', component: SlaComponent },
      {path: 'tickettype', component: TickettypeComponent },
      {path: 'employee', component: EmployeeComponent },
-     {path: 'navbar', component: NavbarComponent }
+     {path: 'navbar', component: NavbarComponent },
+     {path: 'home', component: HomeComponent }
 ];

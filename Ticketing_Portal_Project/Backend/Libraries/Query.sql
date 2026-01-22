@@ -38,20 +38,20 @@ SELECT * FROM TicketType;
 -- 5. Ticket Sample Data
 INSERT INTO Ticket (TicketId, Title, Description, TicketTypeId, TicketCreatedDate, Status, CreatedByEmpId, AssignedToEmpId)
 VALUES
-('TK01', 'Laptop crash', 'System crashes intermittently after login; happens 3-4 times daily.', 'T001', '2025-01-15T09:30:00', 'Open', 'E001', 'E004'),
-('TK02', 'Leave balance', 'Leave balance not updated after last month’s approved leave.', 'T002', '2025-02-02T11:10:00', 'In Progress', 'E002', 'E004'),
-('TK03', 'Travel claim', 'April travel reimbursement pending; receipts uploaded to portal.', 'T003', '2025-03-05T15:45:00', 'Open', 'E003', 'E004'),
-('TK04', 'Login issue', 'Unable to login to the CRM app; getting invalid session error.', 'T004', '2025-04-10T10:05:00', 'Resolved', 'E001', 'E004');
+('TK01', 'Laptop crash', 'System crashes intermittently after login; happens 3-4 times daily.', 'T001', '2025-01-15T09:30:00', 'Open', 'E001', 'E002'),
+('TK02', 'Leave balance', 'Leave balance not updated after last month’s approved leave.', 'T002', '2025-02-02T11:10:00', 'In Progress', 'E002', 'E003'),
+('TK03', 'Travel claim', 'April travel reimbursement pending; receipts uploaded to portal.', 'T003', '2025-03-05T15:45:00', 'Open', 'E003', 'E001'),
+('TK04', 'Login issue', 'Unable to login to the CRM app; getting invalid session error.', 'T004', '2025-04-10T10:05:00', 'Resolved', 'E001', 'E003');
  
 SELECT * FROM Ticket;
 
 -- 6. TicketReply Sample Data
 INSERT INTO TicketReply (ReplyId, TicketId, ReplyByCreatorEmpId, ReplyByAssignedEmpId, ReplyMessage)
 VALUES
-('R00001', 'TK01', 'E001', NULL, 'I am facing frequent system crashes while working.'),
-('R00002', 'TK02', NULL, 'E004', 'Please restart and update your system. Let me know if issue persists.'),
+('R00001', 'TK01', 'E001', 'E002', 'I am facing frequent system crashes while working.'),
+('R00002', 'TK02', NULL, 'E002', 'Please restart and update your system. Let me know if issue persists.'),
 ('R00003', 'TK03', 'E002', NULL, 'Requesting clarification on leave balance discrepancies.'),
-('R00004', 'TK04', NULL, 'E004', 'Your leave balance has been updated correctly now.');
+('R00004', 'TK04', NULL, 'E003', 'Your leave balance has been updated correctly now.');
  
 SELECT * FROM TicketReply;
 

@@ -1,10 +1,11 @@
 /* Main Navigation Styles */
 .main-nav {
-    background-color: #2c3e50;
+    background-color: #34495e; /* Changed to match TicketType header color */
     color: white;
     padding: 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-bottom: 3px solid #2c3e50;
 }
 
 .nav-container {
@@ -20,21 +21,25 @@
 /* Navigation Links */
 .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 15px;
 }
 
 .nav-links a {
     color: #ecf0f1;
     text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 4px;
+    padding: 10px 15px;
+    border-radius: 6px;
     transition: all 0.3s ease;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
 }
 
 .nav-links a:hover {
-    background-color: #34495e;
+    background-color: rgba(52, 152, 219, 0.2);
     color: #3498db;
     transform: translateY(-2px);
 }
@@ -42,7 +47,7 @@
 .nav-links a.active {
     background-color: #3498db;
     color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
 }
 
 /* User Info Section */
@@ -50,20 +55,40 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 8px 18px;
     border-radius: 20px;
     margin-left: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .welcome-text {
     color: #bdc3c7;
     font-size: 14px;
+    font-weight: 400;
 }
 
 .username {
     color: #ffffff;
     font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+/* Active link indicator */
+.nav-links a.active::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 15px;
+    right: 15px;
+    height: 3px;
+    background-color: #2ecc71;
+    border-radius: 2px;
+}
+
+/* Icon styling */
+.nav-links a::before {
     font-size: 16px;
 }
 
@@ -73,6 +98,7 @@
         flex-direction: column;
         height: auto;
         padding: 15px;
+        gap: 15px;
     }
     
     .nav-links {
@@ -84,43 +110,56 @@
     
     .nav-links a {
         text-align: center;
-        padding: 10px;
+        padding: 12px;
+        justify-content: center;
     }
     
     .user-info {
         margin-left: 0;
         width: 100%;
         justify-content: center;
+        margin-top: 10px;
+    }
+    
+    .nav-links a.active::before {
+        left: 30%;
+        right: 30%;
     }
 }
 
-/* Animation for active state */
+/* Animation for nav items */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-.main-nav {
-    animation: fadeIn 0.5s ease-out;
-}
-
-/* Hover effects enhancement */
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background-color: #3498db;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-}
-
-.nav-links a:hover::after {
-    width: 70%;
-}
-
 .nav-links a {
-    position: relative;
+    animation: fadeIn 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.nav-links a:nth-child(1) { animation-delay: 0.1s; }
+.nav-links a:nth-child(2) { animation-delay: 0.2s; }
+.nav-links a:nth-child(3) { animation-delay: 0.3s; }
+.nav-links a:nth-child(4) { animation-delay: 0.4s; }
+.nav-links a:nth-child(5) { animation-delay: 0.5s; }
+.nav-links a:nth-child(6) { animation-delay: 0.6s; }
+.nav-links a:nth-child(7) { animation-delay: 0.7s; }
+.nav-links a:nth-child(8) { animation-delay: 0.8s; }
+
+/* Hover effects */
+.nav-links a:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Scroll behavior */
+.main-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Drop shadow for better visibility */
+.main-nav {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }

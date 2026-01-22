@@ -1,0 +1,123 @@
+<div class="home-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-icon">🏠</div>
+      <h1 class="hero-title">Ticket Management System</h1>
+      <p class="hero-subtitle">Streamline your support tickets with our comprehensive management solution</p>
+      
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-icon">🎫</div>
+          <div class="stat-number">{{ totalTickets || 0 }}</div>
+          <div class="stat-label">Total Tickets</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-number">{{ totalEmployees || 0 }}</div>
+          <div class="stat-label">Employees</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">📋</div>
+          <div class="stat-number">{{ totalTicketTypes || 0 }}</div>
+          <div class="stat-label">Ticket Types</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">🏢</div>
+          <div class="stat-number">{{ totalDepartments || 0 }}</div>
+          <div class="stat-label">Departments</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Actions -->
+  <section class="actions-section">
+    <div class="section-header">
+      <div class="section-icon">⚡</div>
+      <div>
+        <h2 class="section-title">Quick Actions</h2>
+        <p class="section-subtitle">Access frequently used features quickly</p>
+      </div>
+    </div>
+
+    <div class="actions-grid">
+      <a routerLink="/ticket" class="action-card">
+        <div class="action-icon">🎫</div>
+        <h3 class="action-title">Create Ticket</h3>
+        <p class="action-desc">Create a new support ticket</p>
+      </a>
+
+      <a routerLink="/ticketreply" class="action-card">
+        <div class="action-icon">💬</div>
+        <h3 class="action-title">Ticket Replies</h3>
+        <p class="action-desc">Manage ticket conversations</p>
+      </a>
+
+      <a routerLink="/employee" class="action-card">
+        <div class="action-icon">👥</div>
+        <h3 class="action-title">Employee Management</h3>
+        <p class="action-desc">View and manage employees</p>
+      </a>
+
+      <a routerLink="/tickettype" class="action-card">
+        <div class="action-icon">📋</div>
+        <h3 class="action-title">Ticket Types</h3>
+        <p class="action-desc">Configure ticket categories</p>
+      </a>
+    </div>
+  </section>
+      
+  <!-- System Info -->
+  <section class="info-section">
+    <div class="section-header">
+      <div class="section-icon">ℹ️</div>
+      <div>
+        <h2 class="section-title">System Information</h2>
+        <p class="section-subtitle">About the Ticket Management System</p>
+      </div>
+    </div>
+
+    <div class="info-content">
+      <div class="info-card">
+        <div class="info-icon">🎯</div>
+        <h3 class="info-title">Features</h3>
+        <ul class="info-list">
+          <li>Create and manage support tickets</li>
+          <li>Assign tickets to employees</li>
+          <li>Track ticket status and progress</li>
+          <li>Manage ticket categories and types</li>
+          <li>Department-based ticket routing</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">🚀</div>
+        <h3 class="info-title">Benefits</h3>
+        <ul class="info-list">
+          <li>Streamlined support process</li>
+          <li>Improved response times</li>
+          <li>Better ticket tracking</li>
+          <li>Enhanced team collaboration</li>
+          <li>Comprehensive reporting</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">📞</div>
+        <h3 class="info-title">Support</h3>
+        <p class="info-text">
+          Need help? Contact our support team or refer to the documentation.
+        </p>
+        <div class="support-links">
+          <a href="#" class="support-link">📚 Documentation</a>
+          <a href="#" class="support-link">📧 Contact Support</a>
+          <a href="#" class="support-link">❓ FAQ</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,58 +1,146 @@
-<h2>Ticket Type Management</h2>
 
-<!-- ERROR MESSAGE -->
-<div style="color:red" *ngIf="errMsg">
-    {{ errMsg }}
+<div class="tickettype-container">
+  <div class="tickettype-content-wrapper">
+    <!-- Form Section (Left Side) -->
+    <section class="tickettype-form-section">
+      <div class="tickettype-form-header">
+        <div class="tickettype-form-icon">🎫</div>
+        <div>
+          <h2 class="tickettype-form-title">Ticket Type Management</h2>
+          <p class="tickettype-form-subtitle">Add, search, update, or remove ticket types</p>
+        </div>
+      </div>
+
+      <form class="tickettype-form" #ticketTypeForm="ngForm">
+        <!-- Ticket Type ID -->
+        <div class="tickettype-form-group">
+          <label for="ticketTypeId" class="tickettype-form-label required">Ticket Type ID</label>
+          <input
+            type="text"
+            id="ticketTypeId"
+            [(ngModel)]="ticketType.ticketTypeId"
+            name="ticketTypeId"
+            class="tickettype-form-input"
+            placeholder="Enter ticket type ID" />
+        </div>
+        <!-- Type Name -->
+        <div class="tickettype-form-group">
+          <label for="typeName" class="tickettype-form-label required">Type Name</label>
+          <input
+            type="text"
+            id="typeName"
+            [(ngModel)]="ticketType.typeName"
+            name="typeName"
+            class="tickettype-form-input"
+            placeholder="Enter type name" />
+        </div>
+        <!-- Description -->
+        <div class="tickettype-form-group">
+          <label for="description" class="tickettype-form-label">Description</label>
+          <textarea
+            id="description"
+            [(ngModel)]="ticketType.description"
+            name="description"
+            class="tickettype-form-textarea"
+            placeholder="Enter description (optional)"></textarea>
+        </div>
+        <!-- SLA ID -->
+        <div class="tickettype-form-group">
+          <label for="slaId" class="tickettype-form-label required">SLA ID</label>
+          <input
+            type="text"
+            id="slaId"
+            [(ngModel)]="ticketType.slaId"
+            name="slaId"
+            class="tickettype-form-input"
+            placeholder="Enter SLA ID" />
+        </div>
+        <!-- Department ID -->
+        <div class="tickettype-form-group">
+          <label for="deptId" class="tickettype-form-label required">Department ID</label>
+          <input
+            type="text"
+            id="deptId"
+            [(ngModel)]="ticketType.deptId"
+            name="deptId"
+            class="tickettype-form-input"
+            placeholder="Enter department ID" />
+        </div>
+      </form>
+      <div class="tickettype-form-actions">
+        <button
+          type="button"
+          (click)="saveTicketType()"
+          class="tickettype-action-btn tickettype-add-btn">
+          Add
+        </button>
+        <button
+          type="button"
+          (click)="getTicketType()"
+          class="tickettype-action-btn tickettype-search-btn">
+          Search
+        </button>
+        <button
+          type="button"
+          (click)="updateTicketType()"
+          class="tickettype-action-btn tickettype-update-btn">
+          Update
+        </button>
+        <button
+          type="button"
+          (click)="deleteTicketType()"
+          class="tickettype-action-btn tickettype-delete-btn">
+          Delete
+        </button>
+      </div>
+      <div *ngIf="errMsg" class="tickettype-error-container">
+        <div class="tickettype-error-message">
+          {{ errMsg }}
+        </div>
+      </div>
+    </section>
+    
+    <!-- Table Section (Right Side - Scrollable) -->
+    <section class="tickettype-table-section">
+      <div class="tickettype-table-header">
+        <div class="tickettype-table-icon">📋</div>
+        <div>
+          <h2 class="tickettype-table-title">Ticket Type List</h2>
+          <p class="tickettype-table-subtitle">List of all ticket types</p>
+        </div>
+      </div>
+      
+      <div class="tickettypes-table-container">
+        <div *ngIf="ticketTypes.length === 0" class="tickettype-empty-state">
+          <div class="tickettype-empty-icon">📭</div>
+          <p class="tickettype-empty-text">
+            No ticket types available. Add your first ticket type to get started.
+          </p>
+        </div>
+        
+        <div *ngIf="ticketTypes.length > 0">
+          <table class="tickettypes-table">
+            <thead>
+              <tr>
+                <th>Ticket Type ID</th>
+                <th>Type Name</th>
+                <th>Description</th>
+                <th>SLA ID</th>
+                <th>Department ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let tt of ticketTypes">
+                <td>{{ tt.ticketTypeId }}</td>
+                <td>{{ tt.typeName }}</td>
+                <td>{{ tt.description }}</td>
+                <td>{{ tt.slaId }}</td>
+                <td>{{ tt.deptId }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
-
-<hr />
-
-<!-- TICKET TYPE FORM -->
-<div class="tickettype-form">
-
-    <label>Ticket Type ID</label>
-    <input type="text" [(ngModel)]="ticketType.ticketTypeId" />
-
-    <label>Type Name</label>
-    <input type="text" [(ngModel)]="ticketType.typeName" />
-
-    <label>Description</label>
-    <textarea [(ngModel)]="ticketType.description"></textarea>
-
-    <label>SLA ID</label>
-    <input type="text" [(ngModel)]="ticketType.slaId" />
-
-    <label>Department ID</label>
-    <input type="text" [(ngModel)]="ticketType.deptId" />
-
-    <br /><br />
-
-    <button (click)="saveTicketType()">Add</button>
-    <button (click)="getTicketType()">Search</button>
-    <button (click)="updateTicketType()">Update</button>
-    <button (click)="deleteTicketType()">Delete</button>
-
-</div>
-
-<hr />
-
-<!-- TICKET TYPE LIST -->
-<h3>All Ticket Types</h3>
-
-<table border="1" width="100%">
-    <tr>
-        <th>Ticket Type ID</th>
-        <th>Type Name</th>
-        <th>Description</th>
-        <th>SLA ID</th>
-        <th>Department ID</th>
-    </tr>
-
-    <tr *ngFor="let tt of ticketTypes">
-        <td>{{ tt.ticketTypeId }}</td>
-        <td>{{ tt.typeName }}</td>
-        <td>{{ tt.description }}</td>
-        <td>{{ tt.slaId }}</td>
-        <td>{{ tt.deptId }}</td>
-    </tr>
-</table>
