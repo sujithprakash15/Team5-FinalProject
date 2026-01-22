@@ -9,10 +9,11 @@ import { EmployeeComponent } from './employee-component/employee-component';
 import { SlaComponent } from './sla-component/sla-component';
 import { TickettypeComponent } from './tickettype-component/tickettype-component';
 import { NavbarComponent } from './navbar-component/navbar-component';
+import { HomeComponent } from "./home-component/home-component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, LoginComponent, LogoutComponent, TicketComponent, DepartmentComponent, TicketreplyComponent, SlaComponent, TickettypeComponent, EmployeeComponent, NavbarComponent],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, LoginComponent, LogoutComponent, TicketComponent, DepartmentComponent, TicketreplyComponent, SlaComponent, TickettypeComponent, EmployeeComponent, NavbarComponent, HomeComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

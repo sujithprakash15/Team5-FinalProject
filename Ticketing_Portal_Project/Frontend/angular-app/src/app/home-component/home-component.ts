@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { TicketService } from '../ticket-service';
-import { EmployeeService } from '../employee-service';
-import { TickettypeService } from '../tickettype-service';
-import { DepartmentService } from '../department-service';
+import { Component, inject } from '@angular/core';
+import { AuthService } from '../auth-service';
+import { NavbarComponent } from "../navbar-component/navbar-component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [NavbarComponent],
   templateUrl: './home-component.html',
   styleUrls: ['./home-component.css']
 })

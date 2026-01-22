@@ -8,7 +8,7 @@ namespace TicketingWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    // [Authorize]
+    [Authorize]
     public class SLAController : ControllerBase
     {
         ISLARepository slaRepo;
