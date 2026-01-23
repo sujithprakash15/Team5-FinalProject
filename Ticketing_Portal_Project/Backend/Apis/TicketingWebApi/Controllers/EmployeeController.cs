@@ -52,6 +52,7 @@ namespace TicketingWebApi.Controllers
                     return BadRequest(ex.Message);
             }
         }
+        [AllowAnonymous]
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
@@ -101,6 +102,7 @@ namespace TicketingWebApi.Controllers
                     return NotFound(ex.Message);
             }
         }
+        [AllowAnonymous]
         [HttpGet("{empId}/{password}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]

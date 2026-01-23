@@ -17,6 +17,7 @@ namespace TicketingWebApi.Controllers
         {
             departmentRepo = departmentRepository;
         }
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {
