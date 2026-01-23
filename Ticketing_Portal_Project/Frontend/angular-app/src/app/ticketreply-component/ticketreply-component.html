@@ -205,7 +205,6 @@
       </div>
     </form>
 
-<<<<<<< HEAD
     <!-- Lookup and Load Sections -->
     <div class="utility-sections">
       <div class="lookup-section">
@@ -225,57 +224,6 @@
             Search
           </button>
         </div>
-=======
-    <!-- Actions -->
-    <div class="form-actions">
-      <button type="button" class="action-btn add-btn" (click)="saveTicketreply()">
-        Add Reply
-      </button>
-
-      <button type="button" class="action-btn update-btn" (click)="updateTicketreply()">
-        Update
-      </button>
-
-      <button type="button" class="action-btn show-btn" (click)="showTicketreply()">
-        Show
-      </button>
-
-      <button type="button" class="action-btn delete-btn" (click)="deleteTicketreply()">
-        Delete
-      </button>
-    </div>
-
-    <!-- Error -->
-    <div *ngIf="errMsg" class="error-container">
-      <div class="error-message">
-        {{ errMsg }}
-      </div>
-    </div>
-  </section>
-
-  <!-- Filter Section -->
-  <section class="filter-section">
-    <div class="filter-header">
-      <div class="filter-icon">🔍</div>
-      <div>
-        <h3 class="filter-title">Filter Replies</h3>
-        <p class="filter-subtitle">Search replies by different criteria</p>
-      </div>
-    </div>
-
-    <div class="filter-grid">
-      <div class="filter-group">
-        <label for="filterTicketId" class="filter-label">By Ticket ID</label>
-        <input
-          type="text"
-          id="filterTicketId"
-          [(ngModel)]="ticketId"
-          class="filter-input"
-          placeholder="Enter Ticket ID" />
-        <button type="button" class="filter-btn" (click)="showRepliesByTicketId()">
-          Search
-        </button>
->>>>>>> 3b92653bed144033cb4a9ccf85e39348dc6fe787
       </div>
 
       <div class="load-section">
@@ -358,14 +306,6 @@
     </div>
   </div>
 
-<<<<<<< HEAD
-  <!-- Empty State -->
-  <div class="replies-section empty-state" *ngIf="replies.length === 0">
-    <div class="empty-content">
-      <div class="empty-icon">💬</div>
-      <h3>No Replies Found</h3>
-      <p>Select a ticket and submit a reply, or load replies using the buttons above.</p>
-=======
     <div *ngIf="ticketreplies.length > 0" class="ticketreplies-table-container">
       <table class="ticketreplies-table">
         <thead>
@@ -387,7 +327,6 @@
           </tr>
         </tbody>
       </table>
->>>>>>> 3b92653bed144033cb4a9ccf85e39348dc6fe787
     </div>
   </div>
 </div>
