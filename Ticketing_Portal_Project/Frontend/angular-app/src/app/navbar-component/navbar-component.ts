@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
+import { EmployeeService } from '../employee-service';
 
 @Component({
   selector: 'app-navbar-component',
@@ -24,3 +25,4 @@ export class NavbarComponent {
     this.isEmployee = this.role !== "ADMIN";
   }
 }
+

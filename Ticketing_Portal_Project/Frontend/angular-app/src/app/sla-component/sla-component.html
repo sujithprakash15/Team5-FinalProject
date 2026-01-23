@@ -1,13 +1,6 @@
 <div class="sla-container">
   <!-- Form Section -->
   <section class="form-section">
-    <div class="form-header">
-      <div class="form-icon">⏱️</div>
-      <div>
-        <h2 class="form-title">SLA Management</h2>
-        <p class="form-subtitle">Add, update, or remove Service Level Agreements</p>
-      </div>
-    </div>
 
     <form class="sla-form" #slaForm="ngForm">
       <div class="form-group">
@@ -82,7 +75,7 @@
 
     <!-- Actions -->
     <div class="form-actions">
-      <button type="button" class="action-btn add-btn" (click)="addSla()" [disabled]="!slaForm.valid">
+      <button type="button" class="action-btn add-btn" (click)="addSla()">
         Add SLA
       </button>
 
@@ -97,6 +90,7 @@
       <button type="button" class="action-btn delete-btn" (click)="deleteSla()">
         Delete
       </button>
+
     </div>
 
     <!-- Error -->
