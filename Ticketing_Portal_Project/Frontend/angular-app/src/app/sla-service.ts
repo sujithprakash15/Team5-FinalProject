@@ -10,7 +10,7 @@ export class SlaService {
 
   http: HttpClient = inject(HttpClient);
   token;
-  baseUrl: string = "http://localhost:5253/api/sla/";
+  baseUrl: string = "https://ticketportalteam5-hggbcggfgudhf8bg.canadacentral-01.azurewebsites.net/api/sla/";
   httpOptions;
 
   constructor() {

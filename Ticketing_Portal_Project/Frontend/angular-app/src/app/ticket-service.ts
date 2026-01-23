@@ -12,7 +12,7 @@ export class TicketService {
 
   http: HttpClient = inject(HttpClient);
   token;
-  baseUrl: string = "http://localhost:5253/api/ticket/";
+  baseUrl: string = "https://ticketportalteam5-hggbcggfgudhf8bg.canadacentral-01.azurewebsites.net/api/ticket/";
   httpOptions;
 
   constructor() {

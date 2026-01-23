@@ -10,7 +10,7 @@ export class DepartmentService {
 
   http: HttpClient = inject(HttpClient);
 
-  baseUrl: string = "http://localhost:5253/api/department/";
+  baseUrl: string = "https://ticketportalteam5-hggbcggfgudhf8bg.canadacentral-01.azurewebsites.net/api/department/";
 
   getAllDepartments(): Observable<Department[]> {
     return this.http.get<Department[]>(this.baseUrl);

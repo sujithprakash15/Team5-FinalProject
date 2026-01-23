@@ -9,7 +9,7 @@ export class AuthService {
 
   http: HttpClient = inject(HttpClient);
 
-  baseUrl: string = "http://localhost:5253/api/auth/";
+  baseUrl: string = "https://ticketportalteam5-hggbcggfgudhf8bg.canadacentral-01.azurewebsites.net/api/auth/";
   userName: string = "admin@ey.com";
   role: string = "admin";
   secretKey: string = "we are team5 and we think we did our best in this project";

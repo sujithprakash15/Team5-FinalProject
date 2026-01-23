@@ -10,7 +10,7 @@ export class LoginService {
 
   http: HttpClient = inject(HttpClient);
 
-  baseUrl: string = "http://localhost:5253/api/employee/";
+  baseUrl: string = "https://ticketportalteam5-hggbcggfgudhf8bg.canadacentral-01.azurewebsites.net/api/employee/";
 
   constructor() {}
 
