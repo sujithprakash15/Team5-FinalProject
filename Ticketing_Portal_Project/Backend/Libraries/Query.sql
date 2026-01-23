@@ -9,24 +9,14 @@ select * from Department
 
 -- 2.Employee Sample Data
 INSERT INTO Employee (EmpId, EmpName, Password, Role, DeptId) VALUES
-<<<<<<< HEAD
-('E006', 'Krish', 'Kri@123', 'Admin', 'D001');
-('E005', 'Sri harini', 'Sri@123', 'Admin', 'D004');
-=======
->>>>>>> d286adaf9aae0b835b09203cee56e0bb3d9f1470
 ('E001', 'Arun Kumar', 'Arun@123', 'Engineer', 'D001'),
 ('E002', 'Priya Sharma', 'Priya@123', 'HR Executive', 'D002'),
 ('E003', 'Rahul Menon', 'Rahul@123', 'Accountant', 'D003'),
-<<<<<<< HEAD
 ('E004', 'Sana Banu', 'Sana@123', 'Support Agent', 'D004'),
 ('E005', 'Sri harini', 'Sri@123', 'Admin', 'D004'),
 ('E006', 'Sujith', 'Suj@123', 'Admin', 'D003'),
 ('E007', 'Selva', 'Sel@123', 'User', 'D003');
 
-=======
-('E004', 'Sana Banu', 'Sana@123', 'Support Agent', 'D004');
- 
->>>>>>> 037d4ef29c632aaa75d4d809b463f3c194bd9ed5
 select * from Employee
 
 -- 3.SLA Sample Data
@@ -63,8 +53,8 @@ INSERT INTO TicketReply (ReplyId, TicketId, ReplyByCreatorEmpId, ReplyByAssigned
 VALUES
 ('R00002', 'TK02', 'E002', 'E003', 'Please restart and update your system. Let me know if issue persists.'),
 ('R00003', 'TK03', 'E002', NULL, 'Requesting clarification on leave balance discrepancies.'),
-('R00004', 'TK04', NULL, 'E003', 'Your leave balance has been updated correctly now.');
-('R00001', 'TK01', 'E001', 'E002', 'I am facing frequent system crashes while working.'),
+('R00004', 'TK04', NULL, 'E003', 'Your leave balance has been updated correctly now.'),
+('R00001', 'TK01', 'E001', 'E002', 'I am facing frequent system crashes while working.');
  
 SELECT * FROM TicketReply;
 

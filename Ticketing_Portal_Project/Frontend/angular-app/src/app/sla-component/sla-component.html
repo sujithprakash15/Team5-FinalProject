@@ -1,7 +1,7 @@
 <div class="sla-container">
   <!-- Form Section -->
   <section class="form-section">
-
+ 
     <form class="sla-form" #slaForm="ngForm">
       <div class="form-group">
         <label for="slaId" class="form-label required">SLA ID</label>
@@ -13,7 +13,7 @@
           class="form-input"
           placeholder="Enter SLA ID (e.g., SLA001)" />
       </div>
-
+ 
       <div class="form-group">
         <label for="slaName" class="form-label required">SLA Name</label>
         <input
@@ -24,7 +24,7 @@
           class="form-input"
           placeholder="Enter SLA name" />
       </div>
-
+ 
       <div class="form-group">
         <label for="priority" class="form-label required">Priority</label>
         <select
@@ -38,10 +38,10 @@
           <option value="High">High</option>
           <option value="Medium">Medium</option>
           <option value="Low">Low</option>
-          
+         
         </select>
       </div>
-
+ 
       <div class="form-group">
         <label for="responseTime" class="form-label required">
           Response Time (hrs)
@@ -56,7 +56,7 @@
           step="0.5"
           placeholder="Enter response time" />
       </div>
-
+ 
       <div class="form-group">
         <label for="resolutionHours" class="form-label required">
           Resolution Time (hrs)
@@ -72,27 +72,27 @@
           placeholder="Enter resolution time" />
       </div>
     </form>
-
+ 
     <!-- Actions -->
     <div class="form-actions">
       <button type="button" class="action-btn add-btn" (click)="addSla()">
         Add SLA
       </button>
-
+ 
       <button type="button" class="action-btn update-btn" (click)="updateSla()">
         Update
       </button>
-
+ 
       <button type="button" class="action-btn show-btn" (click)="getSla()">
         Show
       </button>
-
+ 
       <button type="button" class="action-btn delete-btn" (click)="deleteSla()">
         Delete
       </button>
-
+ 
     </div>
-
+ 
     <!-- Error -->
     <div *ngIf="errMsg" class="error-container">
       <div class="error-message">
@@ -100,7 +100,7 @@
       </div>
     </div>
   </section>
-
+ 
   <!-- Table Section -->
   <section class="table-section">
     <div class="table-header">
@@ -110,14 +110,14 @@
         <p class="table-subtitle">All configured SLAs</p>
       </div>
     </div>
-
+ 
     <div *ngIf="slas.length === 0" class="empty-state">
       <div class="empty-icon">📭</div>
       <p class="empty-text">
         No SLAs available. Add your first SLA to get started.
       </p>
     </div>
-
+ 
     <div *ngIf="slas.length > 0" class="slas-table-container">
       <table class="slas-table">
         <thead>
