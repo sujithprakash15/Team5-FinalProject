@@ -1,207 +1,284 @@
-<div class="ticketreply-container">
-  <!-- Form Section -->
-  <section class="form-section">
-    <div class="form-header">
-      <div class="form-icon">💬</div>
-      <div>
-        <h2 class="form-title">Ticket Reply Management</h2>
-        <p class="form-subtitle">Add, update, or remove ticket replies</p>
-      </div>
-    </div>
+<div class="ticket-reply-container">
+  <!-- Error Message Display -->
+  <div *ngIf="errMsg" class="error-message">
+    <p>{{ errMsg }}</p>
+    <button (click)="errMsg = ''" class="close-btn">&times;</button>
+  </div>
 
-    <form class="ticketreply-form" #replyForm="ngForm">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="replyId" class="form-label required">Reply ID</label>
-          <input
-            type="text"
-            id="replyId"
-            [(ngModel)]="ticketreply.replyId"
-            name="replyId"
-            class="form-input"
-            placeholder="Enter reply ID" />
-        </div>
-
-        <div class="form-group">
-          <label for="ticketId" class="form-label required">Ticket ID</label>
-          <select
-            id="ticketId"
-            [(ngModel)]="ticketreply.ticketId"
-            name="ticketId"
-            class="form-input">
-            <option value="">Select Ticket</option>
-            <option *ngFor="let ticket of tickets" [value]="ticket.ticketId">
-              {{ ticket.ticketId }} - {{ ticket.title }}
-            </option>
-          </select>
-        </div>
-      </div>
-
+  <!-- Main Form Section -->
+  <div class="form-section">
+    <h2>Ticket Reply Management</h2>
+    
+    <form (ngSubmit)="submitReply()" #replyForm="ngForm">
+      <!-- Ticket ID Dropdown (First Field) -->
       <div class="form-group">
-        <label for="replyMessage" class="form-label required">Reply Message</label>
-        <textarea
-          id="replyMessage"
-          [(ngModel)]="ticketreply.replyMessage"
-          name="replyMessage"
-          class="form-textarea"
-          rows="3"
-          placeholder="Enter reply message"></textarea>
+        <label for="ticketId">Select Ticket *</label>
+        <select
+          id="ticketId"
+          [(ngModel)]="reply.ticketId"
+          name="ticketId"
+          required
+          class="form-control select-control"
+          (change)="onTicketSelect()"
+        >
+          <option value="" disabled selected>-- Select a Ticket --</option>
+          <option *ngFor="let ticket of tickets" [value]="ticket.ticketId">
+            {{ ticket.ticketId }} - {{ ticket.title }}
+          </option>
+        </select>
       </div>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label for="replybycreatorempId" class="form-label required">Created By Employee</label>
-          <input
-            type="text"
-            id="replybycreatorempId"
-            [(ngModel)]="ticketreply.replyByCreatorEmpId"
-            name="replybycreatorempId"
-            class="form-input"
-            placeholder="Enter creator employee ID" />
-        </div>
+      <!-- Reply ID Input (Second Field) -->
+      <div class="form-group">
+        <label for="replyId">Reply ID *</label>
+        <input 
+          type="text" 
+          id="replyId" 
+          [(ngModel)]="reply.replyId" 
+          name="replyId" 
+          required
+          placeholder="Enter Reply ID"
+          class="form-control"
+        >
+      </div>
 
-        <div class="form-group">
-          <label for="replybyassignedempId" class="form-label">Assigned To Employee</label>
-          <input
-            type="text"
-            id="replybyassignedempId"
-            [(ngModel)]="ticketreply.replyByAssignedEmpId"
-            name="replybyassignedempId"
-            class="form-input"
-            placeholder="Enter assigned employee ID" />
+      <!-- Reply Message -->
+      <div class="form-group">
+        <label for="replyMessage">Reply Message *</label>
+        <textarea 
+          id="replyMessage" 
+          [(ngModel)]="reply.replyMessage" 
+          name="replyMessage" 
+          required
+          rows="4"
+          placeholder="Enter your reply message here..."
+          class="form-control"
+        ></textarea>
+      </div>
+
+      <!-- Reply Type Selection -->
+      <div class="form-group">
+        <label>Reply By *</label>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input 
+              type="radio" 
+              name="repliedBy" 
+              [(ngModel)]="repliedBy" 
+              value="creator"
+              (change)="onReplyTypeChange()"
+            >
+            <span class="radio-custom"></span>
+            <span class="radio-text">Creator</span>
+          </label>
+          
+          <label class="radio-label">
+            <input 
+              type="radio" 
+              name="repliedBy" 
+              [(ngModel)]="repliedBy" 
+              value="assignee"
+              (change)="onReplyTypeChange()"
+            >
+            <span class="radio-custom"></span>
+            <span class="radio-text">Assignee</span>
+          </label>
         </div>
+      </div>
+
+   
+
+      <!-- Auto-display Section -->
+      <div class="auto-display-section">
+        <!-- Show Assigned Employee when Creator is selected -->
+        <div class="info-card" *ngIf="repliedBy === 'creator'">
+          <span class="info-icon">👤</span>
+          <div class="info-content">
+            <h4>Ticket Assigned To:</h4>
+            <div class="auto-display-content">
+              <p class="emp-display" *ngIf="selectedAssignedEmpId; else notAssigned">
+                {{ selectedAssignedEmpId }}
+              </p>
+              <ng-template #notAssigned>
+                <p class="no-data-text">Not assigned yet</p>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Show Creator Employee when Assignee is selected -->
+        <div class="info-card" *ngIf="repliedBy === 'assignee'">
+          <span class="info-icon">👤</span>
+          <div class="info-content">
+            <h4>Ticket Created By:</h4>
+            <div class="auto-display-content">
+              <p class="emp-display" *ngIf="selectedCreatorEmpId; else noCreator">
+                {{ selectedCreatorEmpId }}
+              </p>
+              <ng-template #noCreator>
+                <p class="no-data-text">No creator info available</p>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Instruction message -->
+        <div class="auto-display-hint">
+          <span class="hint-icon">ℹ️</span>
+          <p *ngIf="repliedBy === 'creator'">
+            You are replying as Creator. The ticket is assigned to the employee shown above.
+          </p>
+          <p *ngIf="repliedBy === 'assignee'">
+            You are replying as Assignee. The ticket was created by the employee shown above.
+          </p>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button 
+          type="submit" 
+          [disabled]="!replyForm.form.valid" 
+          class="btn btn-primary"
+        >
+          Submit Reply
+        </button>
+        
+        <button 
+          type="button" 
+          (click)="updateReply()" 
+          [disabled]="!reply.replyId"
+          class="btn btn-secondary"
+        >
+          Update Reply
+        </button>
+        
+        <button 
+          type="button" 
+          (click)="deleteReply()" 
+          [disabled]="!reply.replyId"
+          class="btn btn-danger"
+        >
+          Delete Reply
+        </button>
+        
+        <button 
+          type="button" 
+          (click)="newReply()" 
+          class="btn btn-outline"
+        >
+          New Reply
+        </button>
       </div>
     </form>
 
-    <!-- Actions -->
-    <div class="form-actions">
-      <button type="button" class="action-btn add-btn" (click)="saveTicketreply()">
-        Add Reply
-      </button>
-
-      <button type="button" class="action-btn update-btn" (click)="updateTicketreply()">
-        Update
-      </button>
-
-      <button type="button" class="action-btn show-btn" (click)="showTicketreply()">
-        Show
-      </button>
-
-      <button type="button" class="action-btn delete-btn" (click)="deleteTicketreply()">
-        Delete
-      </button>
-
-      <button type="button" class="action-btn clear-btn" (click)="newTicketreply()">
-        Clear
-      </button>
-    </div>
-
-    <!-- Error -->
-    <div *ngIf="errMsg" class="error-container">
-      <div class="error-message">
-        {{ errMsg }}
-      </div>
-    </div>
-  </section>
-
-  <!-- Filter Section -->
-  <section class="filter-section">
-    <div class="filter-header">
-      <div class="filter-icon">🔍</div>
-      <div>
-        <h3 class="filter-title">Filter Replies</h3>
-        <p class="filter-subtitle">Search replies by different criteria</p>
-      </div>
-    </div>
-
-    <div class="filter-grid">
-      <div class="filter-group">
-        <label for="filterTicketId" class="filter-label">By Ticket ID</label>
-        <input
-          type="text"
-          id="filterTicketId"
-          [(ngModel)]="ticketId"
-          class="filter-input"
-          placeholder="Enter Ticket ID" />
-        <button type="button" class="filter-btn" (click)="showRepliesByTicketId()">
-          Search
-        </button>
+    <!-- Lookup and Load Sections -->
+    <div class="utility-sections">
+      <div class="lookup-section">
+        <h3>Lookup Reply</h3>
+        <div class="lookup-controls">
+          <input 
+            type="text" 
+            [(ngModel)]="searchReplyId" 
+            placeholder="Enter Reply ID to search"
+            class="form-control lookup-input"
+          >
+          <button 
+            (click)="searchReply()" 
+            [disabled]="!searchReplyId"
+            class="btn btn-info"
+          >
+            Search
+          </button>
+        </div>
       </div>
 
-      <div class="filter-group">
-        <label for="filterCreatorEmpId" class="filter-label">By Creator Employee ID</label>
-        <input
-          type="text"
-          id="filterCreatorEmpId"
-          [(ngModel)]="empId"
-          class="filter-input"
-          placeholder="Enter Employee ID" />
-        <button type="button" class="filter-btn" (click)="showRepliesByCreatorEmpId()">
-          Search
-        </button>
-      </div>
+      <div class="load-section">
+        <h3>Load Replies</h3>
+        <div class="load-buttons">
+          <button 
+            (click)="loadRepliesByTicket()" 
+            [disabled]="!reply.ticketId"
+            class="btn btn-load"
+          >
+            Load by Ticket
+          </button>
+          
+          <button 
+            (click)="loadRepliesByEmployee()" 
+            class="btn btn-load"
+          >
+            Load by Employee
+          </button>
+          
+          <button 
+            (click)="loadAllReplies()" 
+            class="btn btn-load"
+          >
+            Load All Replies
+          </button>
 
-      <div class="filter-group">
-        <label for="filterAssignedEmpId" class="filter-label">By Assigned Employee ID</label>
-        <input
-          type="text"
-          id="filterAssignedEmpId"
-          [(ngModel)]="empId"
-          class="filter-input"
-          placeholder="Enter Employee ID" />
-        <button type="button" class="filter-btn" (click)="showRepliesbyAssignedEmpId()">
-          Search
-        </button>
-      </div>
-    </div>
-
-    <div class="filter-actions">
-      <button type="button" class="reset-btn" (click)="showAllTicketreplies()">
-        Show All Replies
-      </button>
-    </div>
-  </section>
-
-  <!-- Table Section -->
-  <section class="table-section">
-    <div class="table-header">
-      <div class="table-icon">📋</div>
-      <div>
-        <h2 class="table-title">Ticket Replies</h2>
-        <p class="table-subtitle">
-          {{ ticketreplies.length }} reply{{ ticketreplies.length !== 1 ? 's' : '' }} found
-        </p>
+          <button 
+            (click)="showAllTickets()" 
+            class="btn btn-refresh"
+          >
+            Refresh Tickets
+          </button>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div *ngIf="ticketreplies.length === 0" class="empty-state">
-      <div class="empty-icon">📭</div>
-      <p class="empty-text">
-        No ticket replies found. Add your first reply to get started.
-      </p>
+  <!-- Replies List Section -->
+  <div class="replies-section" *ngIf="replies.length > 0">
+    <div class="section-header">
+      <h3>Ticket Replies ({{ replies.length }})</h3>
+      <div class="ticket-info" *ngIf="reply.ticketId">
+        <span class="ticket-badge">Ticket: {{ reply.ticketId }}</span>
+      </div>
     </div>
+    
+    <div class="replies-list">
+      <div *ngFor="let replyItem of replies" class="reply-card">
+        <div class="reply-header">
+          <div class="reply-meta">
+            <span class="reply-id">Reply #{{ replyItem.replyId }}</span>
+            <span class="ticket-id">Ticket: {{ replyItem.ticketId }}</span>
+          </div>
+      
+        </div>
+        
+        <div class="reply-body">
+          <p class="reply-message">{{ replyItem.replyMessage }}</p>
+        </div>
+        
+        <div class="reply-footer">
+          <div class="emp-info">
+            <span *ngIf="replyItem.replyByCreatorEmpId" class="creator-badge">
+              👤 Creator: {{ replyItem.replyByCreatorEmpId }}
+            </span>
+            <span *ngIf="replyItem.replyByAssignedEmpId" class="assignee-badge">
+              🎯 Assignee: {{ replyItem.replyByAssignedEmpId }}
+            </span>
+          </div>
+          
+          <button 
+            (click)="selectReply(replyItem)" 
+            class="btn-select"
+          >
+            Select
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <div *ngIf="ticketreplies.length > 0" class="ticketreplies-table-container">
-      <table class="ticketreplies-table">
-        <thead>
-          <tr>
-            <th>Reply ID</th>
-            <th>Ticket ID</th>
-            <th>Message</th>
-            <th>Created By</th>
-            <th>Assigned To</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let reply of ticketreplies">
-            <td class="reply-id">{{ reply.replyId }}</td>
-            <td class="ticket-id">{{ reply.ticketId }}</td>
-            <td class="message">{{ reply.replyMessage }}</td>
-            <td class="creator">{{ reply.replyByCreatorEmpId }}</td>
-            <td class="assigned">{{ reply.replyByAssignedEmpId }}</td>
-          </tr>
-        </tbody>
-      </table>
+  <!-- Empty State -->
+  <div class="replies-section empty-state" *ngIf="replies.length === 0">
+    <div class="empty-content">
+      <div class="empty-icon">💬</div>
+      <h3>No Replies Found</h3>
+      <p>Select a ticket and submit a reply, or load replies using the buttons above.</p>
     </div>
-  </section>
+  </div>
 </div>
