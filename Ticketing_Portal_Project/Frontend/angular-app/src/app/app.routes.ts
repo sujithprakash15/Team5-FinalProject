@@ -5,11 +5,11 @@ import { RegisterComponent } from './register-component/register-component';
 import { LogoutComponent } from './logout-component/logout-component';
 import { TicketComponent } from './ticket-component/ticket-component';
 import { DepartmentComponent } from './department-component/department-component';
-import { TicketreplyComponent } from './ticketreply-component/ticketreply-component';
 import { SlaComponent } from './sla-component/sla-component';
 import { TickettypeComponent } from './tickettype-component/tickettype-component';
 import { EmployeeComponent } from './employee-component/employee-component';
 import { NavbarComponent } from './navbar-component/navbar-component';
+import { TicketReplyComponent } from './ticketreply-component/ticketreply-component';
 
 export const routes: Routes = [
      {path: '', component: HomeComponent},
@@ -18,7 +18,7 @@ export const routes: Routes = [
      {path: 'register', component: RegisterComponent },
      {path: 'ticket', component: TicketComponent },
      {path: 'department', component: DepartmentComponent },
-     {path: 'ticketreply', component: TicketreplyComponent },
+     {path: 'ticketreply', component: TicketReplyComponent },
      {path: 'sla', component: SlaComponent },
      {path: 'tickettype', component: TickettypeComponent },
      {path: 'employee', component: EmployeeComponent },
