@@ -14,6 +14,14 @@ public class EFTicketReplyRepository : ITicketReplyRepository
     {
         try
         {
+            if(reply.ReplyByCreatorEmpId == "")
+            {
+                reply.ReplyByCreatorEmpId = null;
+            }
+            else
+            {
+                reply.ReplyByAssignedEmpId = null;
+            }
             await context.TicketReplies.AddAsync(reply);
             await context.SaveChangesAsync();
         }

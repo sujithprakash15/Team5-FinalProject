@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj",
         "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
         "outputPath": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\obj\\",
+=======
+    "d:\\Team 5\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj": {}
+  },
+  "projects": {
+    "d:\\Team 5\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "d:\\Team 5\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj",
+        "projectName": "TicketingWebApi",
+        "projectPath": "d:\\Team 5\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj",
+        "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
+        "outputPath": "d:\\Team 5\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\obj\\",
+>>>>>>> 037d4ef29c632aaa75d4d809b463f3c194bd9ed5
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,8 +40,13 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
+<<<<<<< HEAD
               "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj": {
                 "projectPath": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj"
+=======
+              "d:\\Team 5\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj": {
+                "projectPath": "d:\\Team 5\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj"
+>>>>>>> 037d4ef29c632aaa75d4d809b463f3c194bd9ed5
               }
             }
           }
@@ -512,6 +531,7 @@
         }
       }
     },
+<<<<<<< HEAD
     "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -520,6 +540,16 @@
         "projectPath": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
         "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
         "outputPath": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\obj\\",
+=======
+    "d:\\Team 5\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "d:\\Team 5\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
+        "projectName": "TicketingLibrary",
+        "projectPath": "d:\\Team 5\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
+        "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
+        "outputPath": "d:\\Team 5\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\obj\\",
+>>>>>>> 037d4ef29c632aaa75d4d809b463f3c194bd9ed5
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config"

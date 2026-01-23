@@ -2,207 +2,196 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-import { TicketreplyService } from '../ticketreply-service';
-import { TicketReply } from '../models/TicketReply';
 import { TicketService } from '../ticket-service';
+import { EmployeeService } from '../employee-service';
+import { TicketreplyService } from '../ticketreply-service';
 import { Ticket } from '../models/Ticket';
-
+import { TicketReply } from '../models/TicketReply';
+ 
 @Component({
-  selector: 'app-ticketreply-component',
-  standalone: true,
+  selector: 'app-ticket-reply-component',
   imports: [FormsModule, CommonModule],
   templateUrl: './ticketreply-component.html',
-  styleUrls: ['./ticketreply-component.css']
+  styleUrl: './ticketreply-component.css',
 })
-export class TicketreplyComponent {
-  replySvc = inject(TicketreplyService);
-  ticketSvc = inject(TicketService);
-  tickets: Ticket[] = [];
-  reply: TicketReply = new TicketReply("", "", "", "", "");
+export class TicketReplyComponent {
+ 
+  replySvc: TicketreplyService = inject(TicketreplyService);
+  ticketSvc: TicketService = inject(TicketService);
+  employeeSvc : EmployeeService = inject(EmployeeService)
+  tickets: Ticket[];
+  replier: string;
+  createIdStore : string
+  assignIdStore : string
+  ticket: Ticket;
+  reply: TicketReply;
   replies: TicketReply[] = [];
-
-  errMsg = '';
-
-  empId = '';
-  repliedBy: 'creator' | 'assignee' = 'creator';
-
-
-  selectedCreatorEmpId: string = '';
-  selectedAssignedEmpId: string = '';
-  searchReplyId: string = '';
-
+  errMsg: string = '';
+ 
+  ticketId: string = '';
+  empId: string = '';
+  creator: any = sessionStorage.getItem("empId");
   constructor() {
+    this.tickets = [];
+    this.createIdStore = ""
+    this.assignIdStore = ""
+    this.ticket = new Ticket("", "", "", "", new Date(), "", "", "")
+    this.replier = "";
+    this.reply = new TicketReply('', '', '', this.ticket.createdByEmpId, this.ticket.assignedToEmpId);
+    this.newReply();
+    this.showAllReplies();
     this.showAllTickets();
-    this.loadAllReplies();
+ 
   }
-
-  newReply() {
-    this.reply = new TicketReply("", "", "", "", "");
-  }
-
-  showAllTickets() {
-    this.ticketSvc.getAllTickets().subscribe({
-      next: (response: any) => {
-        this.tickets = response;
-        this.errMsg = "";
-      },
-      error: (err) => this.errMsg = err.error
-    });
-  }
-
-  submitReply() {
-    this.reply.replyByCreatorEmpId = "";
-    this.reply.replyByAssignedEmpId = "";
-
-    if (this.repliedBy === 'creator') {
-      this.reply.replyByCreatorEmpId = this.empId;
-    } else {
-      this.reply.replyByAssignedEmpId = this.empId;
+ 
+ 
+  onReplierChange(value: string) {
+    if (value === 'creator') {
+      console.log("value : " + value);
+       this.reply.replyByAssignedEmpId = "";
+     
     }
-
-    this.replySvc.addTicketreply(this.reply).subscribe({
-      next: (response) => {
-        alert('Reply Added');
-        console.log(response);
-        
-        this.loadRepliesByTicket();
-        this.newReply();
-      },
-      error: err => {
-        this.errMsg = Object.values(err.error?.errors || {}).flat().join(',');
-      }
-    });
-  }
-
-  updateReply() {
-    this.replySvc
-      .updateTicketreply(this.reply.replyId, this.reply)
-      .subscribe({
-        next: () => {
-          alert('Reply Updated');
-          this.loadRepliesByTicket();
-          this.newReply();
-        },
-        error: err => {
-          this.errMsg = Object.values(err.error?.errors || {}).flat().join(',');
-        }
-      });
-  }
-
-  deleteReply() {
-    this.replySvc.deleteTicketreply(this.reply.replyId).subscribe({
-      next: () => {
-        alert('Reply Deleted');
-        this.loadRepliesByTicket();
-        this.newReply();
-      },
-      error: err => {
-        this.errMsg = Object.values(err.error?.errors || {}).flat().join(',');
-      }
-    });
-  }
-
-  getReplyById() {
-    this.replySvc.getoneTicketreply(this.reply.replyId).subscribe({
-      next: (res) => (this.reply = res),
-      error: err => {
-        this.errMsg = Object.values(err.error?.errors || {}).flat().join(',');
-      }
-    });
-  }
-
-  loadAllReplies() {
-    this.replySvc.showallTicketreplies().subscribe({
-      next: (res) => (this.replies = res),
-      error: err => {
-        this.errMsg = Object.values(err.error?.errors || {}).flat().join(',');
-      }
-    });
-  }
-
-  loadRepliesByTicket() {
-    if (!this.reply.ticketId) return;
-
-    this.replySvc.getrepliesbyTicketid(this.reply.ticketId).subscribe({
-      next: (res) => (this.replies = res),
-      error: err => {
-        this.errMsg = Object.values(err.error?.errors || {}).flat().join(',');
-      }
-    });
-  }
-
-  loadRepliesByEmployee() {
-    const empId = prompt('Enter Employee ID');
-
-    if (!empId || empId.trim() === '') {
-      alert('Employee ID is required');
-      return;
+    else {
+      console.log("value : " + value);
+      this.reply.replyByCreatorEmpId = "";
+ 
     }
-
-    this.replySvc.getrepliesbyCreatorempid(empId).subscribe({
-      next: (res) => {
-        this.replies = res;
+  }
+ 
+ 
+  onTicketIdChange(ticketId: string) {
+ 
+    this.ticketSvc.getTicket(ticketId).subscribe({
+      next: (response: Ticket) => {
+        this.ticket = response;
+        this.reply.replyByAssignedEmpId = this.ticket.assignedToEmpId;
+        this.reply.replyByCreatorEmpId = this.ticket.createdByEmpId
+        // console.log(this.ticket);
+        // console.log(this.ticket.createdByEmpId);
+       
         this.errMsg = '';
       },
       error: (err) => {
         this.errMsg = err.error;
+        console.log(err);
+      }
+    });
+    // this.newReply()
+ 
+  }
+  newReply() {
+    this.reply = new TicketReply('', "", '', "", "");
+ 
+  }
+  showAllTickets(): void {
+    this.ticketSvc.getAllTickets().subscribe({
+      next: (response: Ticket[]) => {
+        this.tickets = response;
+ 
+        this.errMsg = '';
+      },
+      error: (err) => {
+        this.errMsg = err.error;
+        console.log(err);
       }
     });
   }
-
-  // Add this method to your component class
-  onReplyTypeChange() {
-    // Clear the employee ID when switching types
-    this.empId = '';
-
-    // Clear the opposite employee ID in the reply object
-    if (this.repliedBy === 'creator') {
-      this.reply.replyByAssignedEmpId = '';
-    } else {
-      this.reply.replyByCreatorEmpId = '';
-    }
-  }
-
-
-  onTicketSelect() {
-  // When a ticket is selected, find its creator and assignee info
-  if (this.reply.ticketId) {
-    const selectedTicket = this.tickets.find(t => t.ticketId === this.reply.ticketId);
-    if (selectedTicket) {
-      // Assuming your Ticket model has these properties
-      this.selectedCreatorEmpId = selectedTicket.createdByEmpId || '';
-      this.selectedAssignedEmpId = selectedTicket.assignedToEmpId || '';
-    }
-  }
-}
-
-
-
-// Add search method
-searchReply() {
-  if (this.searchReplyId) {
-    this.replySvc.getoneTicketreply(this.searchReplyId).subscribe({
+ 
+  showAllReplies() {
+    this.replySvc.showallTicketreplies().subscribe({
       next: (res) => {
+        this.replies = res;
+        this.errMsg = '';
+      },
+      error: (err) => this.errMsg = err.error
+    });
+  }
+ 
+  getReply() {
+    this.replySvc.getoneTicketreply(this.reply.replyId).subscribe({
+      next: (res) => {
+        this.onTicketIdChange(this.reply.ticketId)
         this.reply = res;
         this.errMsg = '';
       },
-      error: err => {
-        this.errMsg = Object.values(err.error?.errors || {}).flat().join(',');
-      }
+      error: (err) => this.errMsg = err.error
+    });
+  }
+ 
+  getRepliesByTicket() {
+    this.replySvc.getrepliesbyTicketid(this.ticketId).subscribe({
+      next: (res) => {
+        this.replies = res;
+        this.errMsg = '';
+      },
+      error: (err) => this.errMsg = err.error
+    });
+  }
+ 
+  getRepliesByCreator() {
+    this.replySvc.getrepliesbyCreatorempid(this.empId).subscribe({
+      next: (res) => {
+        this.replies = res;
+        this.errMsg = '';
+      },
+      error: (err) => this.errMsg = err.error
+    });
+  }
+ 
+  getRepliesByAssigned() {
+    this.replySvc.getrepliesbyAssignedempid(this.empId).subscribe({
+      next: (res) => {
+        this.replies = res;
+        this.errMsg = '';
+      },
+      error: (err) => this.errMsg = err.error
+    });
+  }
+ 
+
+ 
+ 
+  addReply() {
+    if(this.reply.replyId == ""){
+      this.errMsg = "Enter reply id";
+      return;
+    }
+    this.replySvc.addTicketreply(this.reply).subscribe({
+     
+      
+      next: () => {
+        console.log(this.reply);
+ 
+        alert('Reply Added Successfully!');
+        this.showAllReplies();
+        this.newReply();
+      },
+      error: (err) => this.errMsg = err.error
+    });
+  }
+ 
+ 
+  updateReply() {
+    this.replySvc.updateTicketreply(this.reply.replyId, this.reply).subscribe({
+      next: () => {
+        alert('Reply Updated Successfully!');
+        this.showAllReplies();
+        this.newReply();
+      },
+      error: (err) => this.errMsg = err.error
+    });
+  }
+ 
+ 
+  deleteReply() {
+    this.replySvc.deleteTicketreply(this.reply.replyId).subscribe({
+      next: () => {
+        alert('Reply Deleted Successfully!');
+        this.showAllReplies();
+        this.newReply();
+      },
+      error: (err) => this.errMsg = err.error
     });
   }
 }
-
-// Add method to select reply from list
-selectReply(replyItem: TicketReply) {
-  this.reply = { ...replyItem };
-  this.empId = replyItem.replyByCreatorEmpId || replyItem.replyByAssignedEmpId || '';
-  
-  // Set radio button based on who replied
-  if (replyItem.replyByCreatorEmpId) {
-    this.repliedBy = 'creator';
-  } else if (replyItem.replyByAssignedEmpId) {
-    this.repliedBy = 'assignee';
-  }
-}
-}
+ 

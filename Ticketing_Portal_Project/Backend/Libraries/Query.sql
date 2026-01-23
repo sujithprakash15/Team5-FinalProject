@@ -12,11 +12,16 @@ INSERT INTO Employee (EmpId, EmpName, Password, Role, DeptId) VALUES
 ('E001', 'Arun Kumar', 'Arun@123', 'Engineer', 'D001'),
 ('E002', 'Priya Sharma', 'Priya@123', 'HR Executive', 'D002'),
 ('E003', 'Rahul Menon', 'Rahul@123', 'Accountant', 'D003'),
+<<<<<<< HEAD
 ('E004', 'Sana Banu', 'Sana@123', 'Support Agent', 'D004'),
 ('E005', 'Sri harini', 'Sri@123', 'Admin', 'D004'),
 ('E006', 'Sujith', 'Suj@123', 'Admin', 'D003'),
 ('E007', 'Selva', 'Sel@123', 'User', 'D003');
 
+=======
+('E004', 'Sana Banu', 'Sana@123', 'Support Agent', 'D004');
+ 
+>>>>>>> 037d4ef29c632aaa75d4d809b463f3c194bd9ed5
 select * from Employee
 
 -- 3.SLA Sample Data

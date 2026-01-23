@@ -4,7 +4,7 @@ import { LoginComponent } from './login-component/login-component';
 import { LogoutComponent } from './logout-component/logout-component';
 import { TicketComponent } from './ticket-component/ticket-component';
 import { DepartmentComponent } from './department-component/department-component';
-import { TicketreplyComponent } from './ticketreply-component/ticketreply-component';
+import { TicketReplyComponent } from './ticketreply-component/ticketreply-component';
 import { EmployeeComponent } from './employee-component/employee-component';
 import { SlaComponent } from './sla-component/sla-component';
 import { TickettypeComponent } from './tickettype-component/tickettype-component';
@@ -14,7 +14,7 @@ import { RegisterComponent } from './register-component/register-component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, LoginComponent, LogoutComponent, RegisterComponent, TicketComponent, DepartmentComponent, TicketreplyComponent, SlaComponent, TickettypeComponent, EmployeeComponent, NavbarComponent, HomeComponent],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, LoginComponent, LogoutComponent, RegisterComponent, TicketComponent, DepartmentComponent, TicketReplyComponent, SlaComponent, TickettypeComponent, EmployeeComponent, NavbarComponent, HomeComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
