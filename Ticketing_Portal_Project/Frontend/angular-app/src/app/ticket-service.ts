@@ -11,61 +11,54 @@ import { Employee } from './models/Employee';
 export class TicketService {
 
   http: HttpClient = inject(HttpClient);
+  token;
   baseUrl: string = "http://localhost:5253/api/ticket/";
+  httpOptions;
 
-  // ✅ token read dynamically
-  private getHttpOptions() {
-    const token = sessionStorage.getItem("token");
-
-    return {
+  constructor() {
+    this.token = sessionStorage.getItem("token");
+    this.httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': 'Bearer ' + token
+        'Authorization': 'Bearer ' + this.token
       })
     };
   }
 
-  // ===================== TICKETS =====================
-
   getAllTickets(): Observable<Ticket[]> {
-    return this.http.get<Ticket[]>(
-      this.baseUrl,
-      this.getHttpOptions()
-    );
+    return this.http.get<Ticket[]>(this.baseUrl, this.httpOptions);
   }
 
   getTicket(ticketId: string): Observable<Ticket> {
-    return this.http.get<Ticket>(
-      this.baseUrl + ticketId,
-      this.getHttpOptions()
-    );
+    return this.http.get<Ticket>(this.baseUrl + ticketId, this.httpOptions);
   }
 
   getTicketsByEmployee(empId: string): Observable<Ticket[]> {
     return this.http.get<Ticket[]>(
       this.baseUrl + "ByEmployee/" + empId,
-      this.getHttpOptions()
+      this.httpOptions
     );
   }
 
   getTicketsByAssignedEmployee(empId: string): Observable<Ticket[]> {
     return this.http.get<Ticket[]>(
       this.baseUrl + "ByAssignedEmployee/" + empId,
-      this.getHttpOptions()
+      this.httpOptions
     );
   }
 
   getTicketsByTicketType(ticketTypeId: string): Observable<Ticket[]> {
     return this.http.get<Ticket[]>(
       this.baseUrl + "ByTicketType/" + ticketTypeId,
-      this.getHttpOptions()
+      this.httpOptions
     );
   }
+
 
   addTicket(ticket: Ticket): Observable<Ticket> {
     return this.http.post<Ticket>(
       this.baseUrl,
       ticket,
-      this.getHttpOptions()
+      this.httpOptions
     );
   }
 
@@ -73,32 +66,27 @@ export class TicketService {
     return this.http.put<Ticket>(
       this.baseUrl + ticketId,
       ticket,
-      this.getHttpOptions()
+      this.httpOptions
     );
   }
 
   deleteTicket(ticketId: string): Observable<any> {
     return this.http.delete(
       this.baseUrl + ticketId,
-      this.getHttpOptions()
+      this.httpOptions
     );
   }
-
-  // ===================== TICKET TYPE =====================
-
   getAllTicketTypes(): Observable<TicketType[]> {
-    return this.http.get<TicketType[]>(
-      'http://localhost:5253/api/tickettype',
-      this.getHttpOptions()
-    );
-  }
-
-  // ===================== EMPLOYEE =====================
+  return this.http.get<TicketType[]>(
+    'http://localhost:5253/api/tickettype', 
+    this.httpOptions
+  );
+}
 
   getAllEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(
       'http://localhost:5253/api/employee',
-      this.getHttpOptions()
+      this.httpOptions
     );
   }
 }

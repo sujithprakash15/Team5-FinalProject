@@ -15,81 +15,97 @@ import { Employee } from '../models/Employee';
 export class TicketComponent implements OnInit {
 
   ticketSvc: TicketService = inject(TicketService);
-  tickets: Ticket[];
-  ticket: Ticket;
-  ticketTypes: any[];
-  employees: Employee[];
-  errMsg: string;
+
+  tickets: Ticket[] = [];
+  allTickets: Ticket[] = [];
+  ticket: Ticket = new Ticket("", "", "", "", new Date(), "Open", "", "");
+
+  ticketTypes: any[] = [];
+  employees: Employee[] = [];
+  errMsg: string = "";
+
+  role: string = "";
+  loggedEmpId: string = "";
+
+  selectedStatus: string = "";
+  filterEmpId: string = "";
+  filterTicketType: string = "";
 
   constructor() {
-    this.tickets = [];
-    this.ticketTypes = [];
-    this.employees = [];
-    this.errMsg = "";
-
-    this.ticket = new Ticket("", "", "", "", new Date(), "Open", "", "");
-    this.showAllTickets();
+    this.loggedEmpId = sessionStorage.getItem("empId") || "";
+    this.role = sessionStorage.getItem("role") || "";
   }
 
   ngOnInit(): void {
+
+    if (this.role !== "ADMIN") {
+      this.ticket.createdByEmpId = this.loggedEmpId;
+    }
+
     this.loadDropdownData();
+    this.showAllTickets();
   }
 
   loadDropdownData(): void {
-    // Load ticket types
+
     this.ticketSvc.getAllTicketTypes().subscribe({
-      next: (response: any[]) => {
-        this.ticketTypes = response;
-      },
-      error: (err) => {
-        console.error('Error loading ticket types:', err);
-      }
+      next: res => this.ticketTypes = res,
+      error: err => console.error(err)
     });
 
-    // Load employees
-    this.ticketSvc.getAllEmployees().subscribe({
-      next: (response: Employee[]) => {
-        this.employees = response;
-      },
-      error: (err) => {
-        console.error('Error loading employees:', err);
-      }
-    });
+    if (this.role === "ADMIN") {
+      this.ticketSvc.getAllEmployees().subscribe({
+        next: res => this.employees = res,
+        error: err => console.error(err)
+      });
+    }
   }
 
   showAllTickets(): void {
     this.ticketSvc.getAllTickets().subscribe({
-      next: (response: Ticket[]) => {
-        this.tickets = response;
+      next: (res: Ticket[]) => {
+
+        if (this.role === "ADMIN") {
+          this.tickets = res;
+        } else {
+          this.tickets = res.filter(
+            t => t.createdByEmpId === this.loggedEmpId
+          );
+        }
+
+        this.allTickets = this.tickets;
         this.errMsg = "";
       },
-      error: (err) => {
-        this.errMsg = err.error;
-      }
+      error: err => this.errMsg = err.error
     });
   }
 
   showTicket(): void {
     this.ticketSvc.getTicket(this.ticket.ticketId).subscribe({
-      next: (response: Ticket) => {
-        this.ticket = response;
+      next: res => {
+        this.ticket = res;
         this.errMsg = "";
       },
-      error: (err) => {
-        this.errMsg = err.error;
-      }
+      error: err => this.errMsg = err.error
     });
   }
 
   addTicket(): void {
+
+    this.ticket.createdByEmpId = this.loggedEmpId;
+
+    if (this.ticket.assignedToEmpId === "") {
+      this.ticket.assignedToEmpId = null as any;
+    }
+
     this.ticketSvc.addTicket(this.ticket).subscribe({
       next: (response: Ticket) => {
         this.tickets.push(response);
+        this.allTickets.push(response);
         this.ticket = new Ticket("", "", "", "", new Date(), "Open", "", "");
         alert("Ticket raised successfully");
-        this.errMsg = "";
       },
-      error: (err) => {
+      error: err => {
         this.errMsg = err.error;
       }
     });
@@ -103,25 +119,78 @@ export class TicketComponent implements OnInit {
       next: () => {
         this.showAllTickets();
         alert("Ticket updated successfully");
-        this.errMsg = "";
       },
-      error: (err) => {
-        this.errMsg = err.error;
-      }
+      error: err => this.errMsg = err.error
     });
   }
 
   deleteTicket(): void {
     this.ticketSvc.deleteTicket(this.ticket.ticketId).subscribe({
+
       next: () => {
-        this.showAllTickets();
-        alert("Ticket deleted successfully");
+        this.tickets = this.tickets.filter(
+          t => t.ticketId !== this.ticket.ticketId
+        );
+        this.allTickets = this.allTickets.filter(
+          t => t.ticketId !== this.ticket.ticketId
+        );
+        this.ticket = new Ticket("", "", "", "", new Date(), "Open", "", "");
         this.errMsg = "";
+        alert("Ticket deleted successfully");
       },
+
       error: err => {
-        this.errMsg = err.error?.message;
+        if (err.status === 204 || err.status === 200) {
+          this.tickets = this.tickets.filter(
+            t => t.ticketId !== this.ticket.ticketId
+          );
+          this.allTickets = this.allTickets.filter(
+            t => t.ticketId !== this.ticket.ticketId
+          );
+          this.ticket = new Ticket("", "", "", "", new Date(), "Open", "", "");
+          this.errMsg = "";
+          alert("Ticket deleted successfully");
+          return;
+        }
+
+        this.errMsg = "Delete failed";
       }
     });
   }
 
+  filterByStatus(): void {
+    if (!this.selectedStatus) {
+      this.tickets = this.allTickets;
+      return;
+    }
+
+    this.tickets = this.allTickets.filter(
+      t => t.status.toLowerCase() === this.selectedStatus.toLowerCase()
+    );
+  }
+
+  filterByEmployee(): void {
+    if (!this.filterEmpId) return;
+
+    this.ticketSvc.getTicketsByEmployee(this.filterEmpId).subscribe({
+      next: res => this.tickets = res,
+      error: err => this.errMsg = err.error
+    });
+  }
+
+  filterByTicketType(): void {
+    if (!this.filterTicketType) return;
+
+    this.ticketSvc.getTicketsByTicketType(this.filterTicketType).subscribe({
+      next: res => this.tickets = res,
+      error: err => this.errMsg = err.error
+    });
+  }
+
+  clearFilters(): void {
+    this.selectedStatus = "";
+    this.filterEmpId = "";
+    this.filterTicketType = "";
+    this.tickets = this.allTickets;
+  }
 }

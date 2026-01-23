@@ -1,8 +1,61 @@
-<h2>Register New User</h2>
-<form #registerform="ngForm">
-    UserName: <input type="text" [(ngModel)]="user.empId" name="user.empId"/><br />
-    Password: <input type="password" [(ngModel)]="user.password" name="user.password"/><br />
-    <input type="button" value="submit" (click)="register()">
- 
-</form>
-<p style="color: red;"{{errMsg}} ></p>
+
+<div class="register-container">
+
+  <h2>Register New Employee</h2>
+
+  <form>
+
+    <div class="form-group">
+      <label>Employee ID</label>
+      <input
+        type="text"
+        [(ngModel)]="employee.empId"
+        name="empId"
+        placeholder="Enter employee id"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Employee Name</label>
+      <input
+        type="text"
+        [(ngModel)]="employee.empName"
+        name="empName"
+        placeholder="Enter employee name"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input
+        type="password"
+        [(ngModel)]="employee.password"
+        name="password"
+        placeholder="Enter password"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Department</label>
+      <select
+        [(ngModel)]="employee.deptId"
+        name="deptId"
+      >
+        <option value="">-- Select Department --</option>
+        <option
+          *ngFor="let d of departments"
+          [value]="d.deptId">
+          {{ d.deptName }}
+        </option>
+      </select>
+    </div>
+
+    <button type="button" (click)="addEmployee()">
+      Register
+    </button>
+
+    <p class="error" *ngIf="errMsg">{{ errMsg }}</p>
+
+  </form>
+
+</div>

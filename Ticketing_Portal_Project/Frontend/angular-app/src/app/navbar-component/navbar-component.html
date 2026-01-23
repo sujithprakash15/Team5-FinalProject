@@ -2,15 +2,12 @@
     @if(username) {
         <div class="nav-container">
             <div class="nav-links">
-                <a routerLink="/home" 
-                   routerLinkActive="active" 
+
+                <!-- COMMON FOR ALL -->
+                <a routerLink="/home"
+                   routerLinkActive="active"
                    [routerLinkActiveOptions]="{ exact: true }">
                    🏠 Home
-                </a>
-
-                <a routerLink="/employee"
-                   routerLinkActive="active">
-                   👥 Employee
                 </a>
 
                 <a routerLink="/ticket"
@@ -23,25 +20,35 @@
                    💬 Ticket Reply
                 </a>
 
-                <a routerLink="/tickettype"
-                   routerLinkActive="active">
-                   📋 Ticket Type
-                </a>
+                <!-- ADMIN ONLY -->
+                @if(isAdmin) {
 
-                <a routerLink="/department"
-                   routerLinkActive="active">
-                   🏢 Department
-                </a>
+                    <a routerLink="/employee"
+                       routerLinkActive="active">
+                       👥 Employee
+                    </a>
 
-                <a routerLink="/sla"
-                   routerLinkActive="active">
-                   ⏱️ SLA
-                </a>
+                    <a routerLink="/department"
+                       routerLinkActive="active">
+                       🏢 Department
+                    </a>
+
+                    <a routerLink="/tickettype"
+                       routerLinkActive="active">
+                       📋 Ticket Type
+                    </a>
+
+                    <a routerLink="/sla"
+                       routerLinkActive="active">
+                       ⏱️ SLA
+                    </a>
+                }
 
                 <a routerLink="/logout"
                    routerLinkActive="active">
                    🚪 Logout
                 </a>
+
             </div>
 
             <div class="user-info">
@@ -50,11 +57,13 @@
             </div>
         </div>
     }
+
     @else {
         <div class="nav-container">
             <div class="nav-links">
-                <a routerLink="/" 
-                   routerLinkActive="active" 
+
+                <a routerLink="/"
+                   routerLinkActive="active"
                    [routerLinkActiveOptions]="{ exact: true }">
                    🏠 Home
                 </a>
@@ -68,6 +77,7 @@
                    routerLinkActive="active">
                    📝 Register
                 </a>
+
             </div>
         </div>
     }

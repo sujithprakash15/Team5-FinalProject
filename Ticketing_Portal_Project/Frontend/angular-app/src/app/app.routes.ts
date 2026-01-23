@@ -10,20 +10,22 @@ import { SlaComponent } from './sla-component/sla-component';
 import { TickettypeComponent } from './tickettype-component/tickettype-component';
 import { EmployeeComponent } from './employee-component/employee-component';
 import { NavbarComponent } from './navbar-component/navbar-component';
+import { userAccessGuard } from './user-access-guard';
 
 export const routes: Routes = [
-     {path: '', component: HomeComponent},
-     {path: 'login', component: LoginComponent },
-     {path: 'logout', component: LogoutComponent },
-     {path: 'register', component: RegisterComponent },
-     {path: 'ticket', component: TicketComponent },
-     {path: 'department', component: DepartmentComponent },
-     {path: 'ticketreply', component: TicketreplyComponent },
-     {path: 'sla', component: SlaComponent },
-     {path: 'tickettype', component: TickettypeComponent },
-     {path: 'employee', component: EmployeeComponent },
-     {path: 'navbar', component: NavbarComponent },
-     {path: 'home', component: HomeComponent },
-     {path: 'register', component: RegisterComponent }
+
+     { path: '', component: HomeComponent },
+     { path: 'login', component: LoginComponent },
+     { path: 'logout', component: LogoutComponent },
+     { path: 'register', component: RegisterComponent },
+     {path: 'home',component: HomeComponent,canActivate: [userAccessGuard],data: { roles: ['ADMIN', 'EMPLOYEE'] }},
+     {path: 'ticket',component: TicketComponent,canActivate: [userAccessGuard],data: { roles: ['ADMIN', 'EMPLOYEE'] }},
+     {path: 'ticketreply',component: TicketreplyComponent,canActivate: [userAccessGuard],data: { roles: ['ADMIN', 'EMPLOYEE'] }},
+     {path: 'employee',component: EmployeeComponent,canActivate: [userAccessGuard],data: { roles: ['ADMIN'] }},
+     {path: 'department',component: DepartmentComponent,canActivate: [userAccessGuard],data: { roles: ['ADMIN'] }},
+     {path: 'tickettype',component: TickettypeComponent,canActivate: [userAccessGuard],data: { roles: ['ADMIN'] }},
+     {path: 'sla',component: SlaComponent,canActivate: [userAccessGuard],data: { roles: ['ADMIN'] }},
+     { path: 'navbar', component: NavbarComponent },
+     { path: '**', redirectTo: 'home' }
 
 ];
