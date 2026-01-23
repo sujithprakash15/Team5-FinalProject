@@ -59,7 +59,7 @@ public class EYTicketPortalContext : DbContext
     {
        optionsBuilder.UseSqlServer(
             @"Server=localhost\SQLEXPRESS;
-            Database=EYTicketPortalDB2;
+            Database=EYTicketPortalDB3;
             Trusted_Connection=True;
             TrustServerCertificate=True;");
     }

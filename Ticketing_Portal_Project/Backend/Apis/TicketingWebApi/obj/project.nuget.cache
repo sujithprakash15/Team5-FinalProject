@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "MnBfc+ll1co=",
-  "success": true,
-  "projectFilePath": "d:\\Team 5\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj",
-=======
   "dgSpecHash": "2NKxQKGzGm4=",
   "success": true,
   "projectFilePath": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj",
->>>>>>> 3b92653bed144033cb4a9ccf85e39348dc6fe787
   "expectedPackageFiles": [
     "C:\\Users\\user1\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
@@ -66,5 +60,15 @@
     "C:\\Users\\user1\\.nuget\\packages\\system.security.cryptography.pkcs\\9.0.4\\system.security.cryptography.pkcs.9.0.4.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\system.security.cryptography.protecteddata\\9.0.4\\system.security.cryptography.protecteddata.9.0.4.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "message": "Problem reading the cache file D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj",
+      "warningLevel": 1,
+      "filePath": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Apis\\TicketingWebApi\\TicketingWebApi.csproj",
+      "targetGraphs": []
+    }
+  ]
 }

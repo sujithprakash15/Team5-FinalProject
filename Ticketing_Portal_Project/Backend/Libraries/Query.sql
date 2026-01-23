@@ -9,18 +9,13 @@ select * from Department
 
 -- 2.Employee Sample Data
 INSERT INTO Employee (EmpId, EmpName, Password, Role, DeptId) VALUES
-<<<<<<< HEAD
-('E006', 'Krish', 'Kri@123', 'Admin', 'D001');
-=======
-('E007', 'Selva', 'Sel@123', 'User', 'D003');
-
-('E006', 'Sujith', 'Suj@123', 'Admin', 'D003');
->>>>>>> e70362398989aac0fa23bab7170d72cc5dbaacde
-('E005', 'Sri harini', 'Sri@123', 'Admin', 'D004');
 ('E001', 'Arun Kumar', 'Arun@123', 'Engineer', 'D001'),
 ('E002', 'Priya Sharma', 'Priya@123', 'HR Executive', 'D002'),
 ('E003', 'Rahul Menon', 'Rahul@123', 'Accountant', 'D003'),
-('E004', 'Sana Banu', 'Sana@123', 'Support Agent', 'D004');
+('E004', 'Sana Banu', 'Sana@123', 'Support Agent', 'D004'),
+('E005', 'Sri harini', 'Sri@123', 'Admin', 'D004'),
+('E006', 'Sujith', 'Suj@123', 'Admin', 'D003'),
+('E007', 'Selva', 'Sel@123', 'User', 'D003');
 
 select * from Employee
 
