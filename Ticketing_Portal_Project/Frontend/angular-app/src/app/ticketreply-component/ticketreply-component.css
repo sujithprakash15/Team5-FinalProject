@@ -25,10 +25,6 @@
   flex-grow: 1;
 }
 
-<<<<<<< HEAD
-.close-btn {
-  background: none;
-=======
 .form-subtitle,
 .filter-subtitle,
 .table-subtitle {
@@ -143,39 +139,9 @@ select.form-input {
   font-size: 14px;
   font-weight: 600;
   border-radius: 8px;
->>>>>>> 3b92653bed144033cb4a9ccf85e39348dc6fe787
   border: none;
   font-size: 20px;
   cursor: pointer;
-<<<<<<< HEAD
-  color: #721c24;
-  padding: 0 10px;
-}
-
-.close-btn:hover {
-  color: #490f14;
-}
-
-/* Form Section */
-.form-section {
-  background: white;
-  border-radius: 8px;
-  padding: 25px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
-}
-
-.form-section h2 {
-  color: #333;
-  margin: 0 0 25px 0;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #007bff;
-  font-size: 24px;
-}
-
-/* Form Groups */
-.form-group {
-=======
   color: #fff;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
@@ -265,7 +231,6 @@ select.form-input {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
->>>>>>> 3b92653bed144033cb4a9ccf85e39348dc6fe787
   margin-bottom: 20px;
 }
 
@@ -531,39 +496,6 @@ textarea.form-control {
   gap: 10px;
 }
 
-<<<<<<< HEAD
-.btn-load {
-  background: #6f42c1;
-  color: white;
-  padding: 10px 15px;
-  text-align: left;
-}
-
-.btn-load:hover {
-  background: #5a32a3;
-}
-
-.btn-refresh {
-  background: #fd7e14;
-  color: white;
-  padding: 10px 15px;
-}
-
-.btn-refresh:hover {
-  background: #e96a00;
-}
-
-/* Replies Section */
-.replies-section {
-  background: white;
-  border-radius: 8px;
-  padding: 25px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin-top: 30px;
-}
-
-.section-header {
-=======
 .filter-label {
   font-size: 14px;
   font-weight: 600;
@@ -593,7 +525,6 @@ textarea.form-control {
 }
 
 .filter-actions {
->>>>>>> 3b92653bed144033cb4a9ccf85e39348dc6fe787
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -602,138 +533,6 @@ textarea.form-control {
   border-bottom: 2px solid #6f42c1;
 }
 
-<<<<<<< HEAD
-.section-header h3 {
-  margin: 0;
-  color: #495057;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.ticket-info {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.ticket-badge {
-  background: #e9ecef;
-  color: #495057;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-/* Replies List */
-.replies-list {
-  display: grid;
-  gap: 15px;
-}
-
-.reply-card {
-  border: 1px solid #dee2e6;
-  border-radius: 6px;
-  padding: 20px;
-  background: #fff;
-  transition: box-shadow 0.2s;
-}
-
-.reply-card:hover {
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-}
-
-.reply-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #e9ecef;
-}
-
-.reply-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.reply-id {
-  font-weight: 600;
-  color: #495057;
-  font-size: 14px;
-}
-
-.ticket-id {
-  color: #6c757d;
-  font-size: 13px;
-}
-
-.reply-date {
-  color: #6c757d;
-  font-size: 13px;
-}
-
-.reply-body {
-  margin-bottom: 15px;
-}
-
-.reply-message {
-  margin: 0;
-  color: #495057;
-  line-height: 1.6;
-  font-size: 14px;
-  padding: 12px;
-  background: #f8f9fa;
-  border-radius: 4px;
-  border-left: 3px solid #007bff;
-}
-
-.reply-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid #e9ecef;
-}
-
-.emp-info {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.creator-badge, .assignee-badge {
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.creator-badge {
-  background: #e7f6ff;
-  color: #007bff;
-  border: 1px solid #b3d7ff;
-}
-
-.assignee-badge {
-  background: #e8f7e8;
-  color: #28a745;
-  border: 1px solid #b3e0b3;
-}
-
-.btn-select {
-  background: #fd7e14;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-=======
 /* Error Message */
 .error-container {
   margin-top: 20px;
@@ -745,7 +544,6 @@ textarea.form-control {
 
 .error-message {
   color: #b71c1c;
->>>>>>> 3b92653bed144033cb4a9ccf85e39348dc6fe787
   font-weight: 600;
   font-size: 13px;
   transition: background-color 0.2s;
@@ -777,10 +575,6 @@ textarea.form-control {
   margin-bottom: 10px;
 }
 
-<<<<<<< HEAD
-.empty-content p {
-  color: #6c757d;
-=======
 /* Table */
 .ticketreplies-table-container {
   overflow-x: auto;
@@ -835,7 +629,6 @@ textarea.form-control {
 .ticketreplies-table td:nth-child(3) {
   max-width: 300px;
   word-wrap: break-word;
->>>>>>> 3b92653bed144033cb4a9ccf85e39348dc6fe787
   line-height: 1.5;
 }
 
@@ -848,14 +641,6 @@ textarea.form-control {
   .form-section {
     padding: 20px;
   }
-<<<<<<< HEAD
-  
-  .action-buttons {
-    flex-direction: column;
-  }
-  
-  .btn {
-=======
 
   .form-row,
   .filter-grid {
@@ -873,7 +658,6 @@ textarea.form-control {
   }
 
   .reset-btn {
->>>>>>> 3b92653bed144033cb4a9ccf85e39348dc6fe787
     width: 100%;
     max-width: 300px;
   }
