@@ -1,52 +1,31 @@
 <div class="ticket-container">
 
   <section class="form-section">
-
-    <div class="form-header">
-      <div class="form-icon">🎫</div>
-      <div>
-        <h2 class="form-title">Ticket Management</h2>
-        <p class="form-subtitle">Create, update, or manage tickets</p>
-      </div>
-    </div>
-
     <form class="ticket-form" #ticketForm="ngForm">
 
       <div class="form-row">
         <div class="form-group">
           <label class="form-label required">Ticket ID</label>
-          <input class="form-input"
-                 [(ngModel)]="ticket.ticketId"
-                 name="ticketId">
+          <input class="form-input" [(ngModel)]="ticket.ticketId" name="ticketId">
         </div>
 
         <div class="form-group">
           <label class="form-label required">Title</label>
-          <input class="form-input"
-                 [(ngModel)]="ticket.title"
-                 name="title"
-                 required>
+          <input class="form-input" [(ngModel)]="ticket.title" name="title" required>
         </div>
       </div>
 
       <div class="form-group">
         <label class="form-label required">Description</label>
-        <input class="form-input"
-               [(ngModel)]="ticket.description"
-               name="description"
-               required>
+        <input class="form-input" [(ngModel)]="ticket.description" name="description" required>
       </div>
 
       <div class="form-row">
         <div class="form-group">
           <label class="form-label required">Ticket Type</label>
-          <select class="form-input"
-                  [(ngModel)]="ticket.ticketTypeId"
-                  name="ticketTypeId"
-                  required>
+          <select class="form-input" [(ngModel)]="ticket.ticketTypeId" name="ticketTypeId" required>
             <option value="" disabled>Select Ticket Type</option>
-            <option *ngFor="let type of ticketTypes"
-                    [value]="type.ticketTypeId || type.id">
+            <option *ngFor="let type of ticketTypes" [value]="type.ticketTypeId || type.id">
               {{ type.ticketTypeId || type.id }}
             </option>
           </select>
@@ -54,9 +33,7 @@
 
         <div class="form-group">
           <label class="form-label required">Status</label>
-          <select class="form-input"
-                  [(ngModel)]="ticket.status"
-                  name="status">
+          <select class="form-input" [(ngModel)]="ticket.status" name="status">
             <option>Open</option>
             <option>In Progress</option>
             <option>Resolved</option>
@@ -69,11 +46,8 @@
 
         <div class="form-group" *ngIf="role === 'ADMIN'">
           <label class="form-label required">Created By</label>
-          <select class="form-input"
-                  [(ngModel)]="ticket.createdByEmpId"
-                  name="createdByEmpId">
-            <option *ngFor="let emp of employees"
-                    [value]="emp.empId">
+          <select class="form-input" [(ngModel)]="ticket.createdByEmpId" name="createdByEmpId">
+            <option *ngFor="let emp of employees" [value]="emp.empId">
               {{ emp.empName }} ({{ emp.empId }})
             </option>
           </select>
@@ -81,19 +55,14 @@
 
         <div class="form-group" *ngIf="role !== 'ADMIN'">
           <label class="form-label required">Created By</label>
-          <input class="form-input"
-                 [value]="loggedEmpId"
-                 disabled>
+          <input class="form-input" [value]="loggedEmpId" disabled>
         </div>
 
         <div class="form-group" *ngIf="role === 'ADMIN'">
           <label class="form-label">Assigned To</label>
-          <select class="form-input"
-                  [(ngModel)]="ticket.assignedToEmpId"
-                  name="assignedToEmpId">
+          <select class="form-input" [(ngModel)]="ticket.assignedToEmpId" name="assignedToEmpId">
             <option value="">Not Assigned</option>
-            <option *ngFor="let emp of employees"
-                    [value]="emp.empId">
+            <option *ngFor="let emp of employees" [value]="emp.empId">
               {{ emp.empName }} ({{ emp.empId }})
             </option>
           </select>
@@ -105,27 +74,19 @@
 
     <div class="form-actions">
 
-      <button class="action-btn add-btn"
-              (click)="addTicket()"
-              [disabled]="!ticketForm.valid">
+      <button class="action-btn add-btn" (click)="addTicket()" [disabled]="!ticketForm.valid">
         Add Ticket
       </button>
 
-      <button class="action-btn update-btn"
-              *ngIf="role === 'ADMIN'"
-              (click)="updateTicket()">
+      <button class="action-btn update-btn" *ngIf="role === 'ADMIN'" (click)="updateTicket()">
         Update
       </button>
 
-      <button class="action-btn show-btn"
-              (click)="showTicket()"
-              [disabled]="!ticket.ticketId">
+      <button class="action-btn show-btn" (click)="showTicket()" [disabled]="!ticket.ticketId">
         Show Ticket
       </button>
 
-      <button class="action-btn delete-btn"
-              *ngIf="role === 'ADMIN'"
-              (click)="deleteTicket()">
+      <button class="action-btn delete-btn" *ngIf="role === 'ADMIN'" (click)="deleteTicket()">
         Delete
       </button>
 
@@ -145,9 +106,7 @@
 
       <div class="filter-box">
         <label>Status</label>
-        <select class="form-input"
-                [(ngModel)]="selectedStatus"
-                (change)="filterByStatus()">
+        <select class="form-input" [(ngModel)]="selectedStatus" (change)="filterByStatus()">
           <option value="">All</option>
           <option>Open</option>
           <option>In Progress</option>
@@ -158,20 +117,16 @@
 
       <div class="filter-box">
         <label>Ticket Type</label>
-        <select class="form-input"
-                [(ngModel)]="filterTicketType"
-                (change)="filterByTicketType()">
+        <select class="form-input" [(ngModel)]="filterTicketType" (change)="filterByTicketType()">
           <option value="">All</option>
-          <option *ngFor="let type of ticketTypes"
-                  [value]="type.ticketTypeId || type.id">
+          <option *ngFor="let type of ticketTypes" [value]="type.ticketTypeId || type.id">
             {{ type.ticketTypeId || type.id }}
           </option>
         </select>
       </div>
 
       <div class="filter-box">
-        <button class="action-btn clear-btn"
-                (click)="clearFilters()">
+        <button class="action-btn clear-btn" (click)="clearFilters()">
           Clear
         </button>
       </div>
@@ -194,8 +149,7 @@
         <div class="ticket-header">
           <span class="ticket-id">#{{ t.ticketId }}</span>
 
-          <span class="ticket-status"
-                [class]="'status-' + t.status.toLowerCase().replace(' ','-')">
+          <span class="ticket-status" [class]="'status-' + t.status.toLowerCase().replace(' ','-')">
             {{ t.status }}
           </span>
         </div>

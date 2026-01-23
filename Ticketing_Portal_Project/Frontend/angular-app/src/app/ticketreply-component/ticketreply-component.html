@@ -1,240 +1,101 @@
-<div class="ticketreply-container">
-
-  <!-- ================= FORM SECTION ================= -->
-  <div class="form-section">
-    <h2>Ticket Reply Management</h2>
-
-    <form (ngSubmit)="submitReply()" #replyForm="ngForm">
-
-      <!-- Ticket Selection -->
-      <div class="form-group">
-        <label for="ticketId">Select Ticket *</label>
-        <select
-          id="ticketId"
-          name="ticketId"
-          class="form-control"
-          required
-          [(ngModel)]="reply.ticketId"
-          (change)="onTicketSelect()"
-        >
-          <option value="" disabled>-- Select Ticket --</option>
-          <option *ngFor="let ticket of tickets" [value]="ticket.ticketId">
-            {{ ticket.ticketId }} - {{ ticket.title }}
-          </option>
-        </select>
-      </div>
-
-      <!-- Reply ID -->
-      <div class="form-group">
-        <label for="replyId">Reply ID *</label>
-        <input
-          type="text"
-          id="replyId"
-          name="replyId"
-          class="form-control"
-          required
-          placeholder="Enter Reply ID"
-          [(ngModel)]="reply.replyId"
-        />
-      </div>
-
-      <!-- Reply Message -->
-      <div class="form-group">
-        <label for="replyMessage">Reply Message *</label>
-        <textarea
-          id="replyMessage"
-          name="replyMessage"
-          rows="4"
-          class="form-control"
-          required
-          placeholder="Enter reply message"
-          [(ngModel)]="reply.replyMessage"
-        ></textarea>
-      </div>
-
-      <!-- Reply By -->
-      <div class="form-group">
-        <label>Reply By *</label>
-
-        <div class="radio-group">
-          <label>
-            <input
-              type="radio"
-              name="repliedBy"
-              value="creator"
-              [(ngModel)]="repliedBy"
-              (change)="onReplyTypeChange()"
-            />
-            Creator
-          </label>
-
-          <label>
-            <input
-              type="radio"
-              name="repliedBy"
-              value="assignee"
-              [(ngModel)]="repliedBy"
-              (change)="onReplyTypeChange()"
-            />
-            Assignee
-          </label>
+<div class="ticketreply-management-container">
+  <h2 class="ticketreply-header">Ticket Reply Management</h2>
+ 
+  <div class="form-card">
+    <form class="ticketreply-form">
+      <div class="single-row-form">
+        <div class="form-group">
+          <label for="replyId" class="form-label">Reply ID</label>
+          <div class="input-with-button">
+            <input type="text" id="replyId" [(ngModel)]="reply.replyId" name="replyId" class="form-input" placeholder="Enter ID" />
+            <!-- <button type="button" class="inline-btn show-btn" (click)="getReply()">👁️ Show</button> -->
+          </div>
+        </div>
+ 
+        <div class="form-group">
+          <label for="ticketId" class="form-label">Ticket ID</label>
+          <select id="ticketId" [(ngModel)]="reply.ticketId" (ngModelChange)="onTicketIdChange($event)" name="ticketId" class="form-input">
+            <option value="">Select Ticket</option>
+            <option *ngFor="let t of tickets" [value]="t.ticketId">{{ t.ticketId }}</option>
+          </select>
+        </div>
+ 
+        <div class="form-group">
+          <label for="replier" class="form-label">Select Replier</label>
+          <select id="replier" [(ngModel)]="replier" (ngModelChange)="onReplierChange($event)" name="replier" class="form-input">
+            <option value="">Select Replier</option>
+            <option value="creator">Creator</option>
+            <option value="assigner">Assigner</option>
+          </select>
         </div>
       </div>
-
-      <!-- ================= AUTO DISPLAY ================= -->
-
-      <div class="auto-display-section">
-
-        <!-- Creator View -->
-        <div *ngIf="repliedBy === 'creator'" class="info-card">
-          <h4>Ticket Assigned To</h4>
-
-          <p *ngIf="selectedAssignedEmpId; else notAssigned">
-            {{ selectedAssignedEmpId }}
-          </p>
-
-          <ng-template #notAssigned>
-            <p class="no-data-text">Not assigned yet</p>
-          </ng-template>
+ 
+      <div class="single-row-form">
+        <div class="form-group form-group-wide">
+          <label for="replyMessage" class="form-label">Reply Message</label>
+          <textarea id="replyMessage" [(ngModel)]="reply.replyMessage" name="replyMessage" class="form-input form-textarea" placeholder="Enter reply message"></textarea>
         </div>
-
-        <!-- Assignee View -->
-        <div *ngIf="repliedBy === 'assignee'" class="info-card">
-          <h4>Ticket Created By</h4>
-
-          <p *ngIf="selectedCreatorEmpId; else noCreator">
-            {{ selectedCreatorEmpId }}
-          </p>
-
-          <ng-template #noCreator>
-            <p class="no-data-text">No creator info available</p>
-          </ng-template>
-        </div>
-
+ 
+        <!-- <div class="form-group">
+          <div *ngIf="replier === 'assigner'" class="replier-field">
+            <label for="replyByCreatorEmpId" class="form-label">Creator Emp ID</label>
+            <input type="text" id="replyByCreatorEmpId" [(ngModel)]="createIdStore" name="replyByCreatorEmpId" class="form-input" placeholder="Creator ID" disabled />
+          </div>
+         
+          <div *ngIf="replier === 'creator'" class="replier-field">
+            <label for="replyByAssignedEmpId" class="form-label">Assigned Emp ID</label>
+            <input type="text" id="replyByAssignedEmpId" [(ngModel)]="assignIdStore" name="replyByAssignedEmpId" class="form-input" placeholder="Assigned ID" disabled />
+          </div> -->
+         
+          <!-- <div *ngIf="!replier" class="replier-placeholder">
+            <div class="placeholder-text">Select replier above</div>
+          </div>
+        </div> -->
       </div>
-
-      <!-- ================= ACTION BUTTONS ================= -->
-
+ 
       <div class="action-buttons">
-
-        <button
-          type="submit"
-          class="btn btn-primary"
-          [disabled]="!replyForm.valid"
-        >
-          Submit Reply
-        </button>
-
-        <button
-          type="button"
-          class="btn btn-secondary"
-          (click)="updateReply()"
-          [disabled]="!reply.replyId"
-        >
-          Update
-        </button>
-
-        <button
-          type="button"
-          class="btn btn-danger"
-          (click)="deleteReply()"
-          [disabled]="!reply.replyId"
-        >
-          Delete
-        </button>
-
-        <button
-          type="button"
-          class="btn btn-outline"
-          (click)="newReply()"
-        >
-          New Reply
-        </button>
-
+        <button type="button" class="action-btn add-btn" (click)="addReply()">💾 Save</button>
+        <button type="button" class="action-btn update-btn" (click)="updateReply()">↻ Update</button>
+        <button type="button" class="action-btn delete-btn" (click)="deleteReply()">🗑️ Delete</button>
+        <button type="button" class="action-btn show-all-btn" (click)="getReply()">👁️ Show</button>
       </div>
-
+ 
+      <div *ngIf="errMsg" class="error-message">⚠️ {{ errMsg }}</div>
     </form>
   </div>
-
-  <!-- ================= SEARCH & LOAD ================= -->
-
-  <div class="utility-sections">
-
-    <div class="lookup-section">
-      <h3>Search Reply</h3>
-
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Enter Reply ID"
-        [(ngModel)]="searchReplyId"
-        name="searchReplyId"
-      />
-
-      <button
-        class="btn btn-info"
-        (click)="searchReply()"
-        [disabled]="!searchReplyId"
-      >
-        Search
-      </button>
+ 
+  <h3 class="list-header">List of Ticket Replies</h3>
+ 
+  <div class="table-card">
+    <div class="table-wrapper">
+      <table class="ticketreplies-table">
+        <thead>
+          <tr>
+            <th>Reply ID</th>
+            <th>Ticket ID</th>
+            <th>Message</th>
+            <th>Creator</th>
+            <th>Assigned</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (r of replies; track r) {
+          <tr>
+            <td><span class="reply-id">{{ r.replyId }}</span></td>
+            <td><span class="ticket-id">{{ r.ticketId }}</span></td>
+            <td class="message-cell">{{ r.replyMessage }}</td>
+            <td>{{ r.replyByCreatorEmpId }}</td>
+            <td>{{ r.replyByAssignedEmpId }}</td>
+          </tr>
+          }
+          @empty {
+          <tr>
+            <td colspan="5" class="no-data">📭 No replies found</td>
+          </tr>
+          }
+        </tbody>
+      </table>
     </div>
-
-    <div class="load-section">
-      <h3>Load Replies</h3>
-
-      <button class="btn" (click)="loadRepliesByTicket()" [disabled]="!reply.ticketId">
-        Load by Ticket
-      </button>
-
-      <button class="btn" (click)="loadRepliesByEmployee()">
-        Load by Employee
-      </button>
-
-      <button class="btn" (click)="loadAllReplies()">
-        Load All
-      </button>
-
-      <button class="btn btn-refresh" (click)="showAllTickets()">
-        Refresh Tickets
-      </button>
-    </div>
-
   </div>
-
-  <!-- ================= REPLY LIST ================= -->
-
-  <div class="replies-section" *ngIf="replies.length > 0">
-
-    <h3>Ticket Replies ({{ replies.length }})</h3>
-
-    <div class="replies-list">
-      <div *ngFor="let r of replies" class="reply-card">
-
-        <div class="reply-header">
-          <strong>Reply #{{ r.replyId }}</strong>
-          <span>Ticket: {{ r.ticketId }}</span>
-        </div>
-
-        <p>{{ r.replyMessage }}</p>
-
-        <div class="reply-footer">
-          <span *ngIf="r.replyByCreatorEmpId">
-            👤 Creator: {{ r.replyByCreatorEmpId }}
-          </span>
-
-          <span *ngIf="r.replyByAssignedEmpId">
-            🎯 Assignee: {{ r.replyByAssignedEmpId }}
-          </span>
-
-          <button class="btn-select" (click)="selectReply(r)">
-            Select
-          </button>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-
 </div>
+ 
