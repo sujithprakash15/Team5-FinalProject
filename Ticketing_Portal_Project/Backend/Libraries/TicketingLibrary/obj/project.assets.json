@@ -3663,11 +3663,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "D:\\Team 5\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
       "projectName": "TicketingLibrary",
       "projectPath": "D:\\Team 5\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
       "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
       "outputPath": "D:\\Team 5\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\obj\\",
+=======
+      "projectUniqueName": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
+      "projectName": "TicketingLibrary",
+      "projectPath": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\TicketingLibrary.csproj",
+      "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
+      "outputPath": "D:\\Team5-FinalProject\\Ticketing_Portal_Project\\Backend\\Libraries\\TicketingLibrary\\obj\\",
+>>>>>>> 3b92653bed144033cb4a9ccf85e39348dc6fe787
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config"

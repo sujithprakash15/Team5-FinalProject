@@ -23,7 +23,7 @@ export const routes: Routes = [
      {path: 'tickettype', component: TickettypeComponent },
      {path: 'employee', component: EmployeeComponent },
      {path: 'navbar', component: NavbarComponent },
-     {path: 'home', component: HomeComponent },
-     {path: 'register', component: RegisterComponent }
+     // {path: 'home', component: HomeComponent },
+     // {path: 'register', component: RegisterComponent }
 
 ];

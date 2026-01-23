@@ -1,36 +1,51 @@
 <div class="tickettype-container">
+  <!-- Form Section -->
   <section class="form-section">
-    <!-- Add form header back
-    <div class="form-header">
-      <div class="form-icon">🎫</div>
-      <div>
-        <h2 class="form-title">Ticket Type Management</h2>
-        <p class="form-subtitle">Add, update, or remove ticket types</p>
-      </div>
-    </div> -->
-
     <form class="tickettype-form" #ticketTypeForm="ngForm">
       <div class="form-group">
         <label for="ticketTypeId" class="form-label required">Ticket Type ID</label>
-        <input type="text" id="ticketTypeId" [(ngModel)]="ticketType.ticketTypeId" name="ticketTypeId"
-          class="form-input" placeholder="Enter ticket type ID (e.g., TT01)" maxlength="4" />
+        <input
+          type="text"
+          id="ticketTypeId"
+          [(ngModel)]="ticketType.ticketTypeId"
+          name="ticketTypeId"
+          class="form-input"
+          placeholder="Enter ticket type ID (e.g., TT01)"
+          maxlength="4" />
       </div>
 
       <div class="form-group">
         <label for="typeName" class="form-label required">Type Name</label>
-        <input type="text" id="typeName" [(ngModel)]="ticketType.typeName" name="typeName" class="form-input"
-          placeholder="Enter type name" maxlength="30" />
+        <input
+          type="text"
+          id="typeName"
+          [(ngModel)]="ticketType.typeName"
+          name="typeName"
+          class="form-input"
+          placeholder="Enter type name"
+          maxlength="30" />
       </div>
 
       <div class="form-group">
         <label for="description" class="form-label">Description</label>
-        <textarea id="description" [(ngModel)]="ticketType.description" name="description" class="form-textarea"
-          placeholder="Enter ticket type description" rows="3" maxlength="100"></textarea>
+        <textarea
+          id="description"
+          [(ngModel)]="ticketType.description"
+          name="description"
+          class="form-textarea"
+          placeholder="Enter ticket type description"
+          rows="3"
+          maxlength="100"></textarea>
       </div>
 
       <div class="form-group">
         <label for="slaId" class="form-label required">SLA</label>
-        <select id="slaId" [(ngModel)]="ticketType.slaId" name="slaId" class="form-select">
+        <select
+          id="slaId"
+          [(ngModel)]="ticketType.slaId"
+          name="slaId"
+          class="form-input"
+          required>
           <option value="">Select an SLA</option>
           <option *ngFor="let sla of slas" [value]="sla.slaId">
             {{ sla.slaId }} - {{ sla.slaName }}
@@ -40,7 +55,12 @@
 
       <div class="form-group">
         <label for="deptId" class="form-label required">Department</label>
-        <select id="deptId" [(ngModel)]="ticketType.deptId" name="deptId" class="form-select">
+        <select
+          id="deptId"
+          [(ngModel)]="ticketType.deptId"
+          name="deptId"
+          class="form-input"
+          required>
           <option value="">Select a department</option>
           <option *ngFor="let dept of departments" [value]="dept.deptId">
             {{ dept.deptId }} - {{ dept.deptName }}
@@ -49,28 +69,39 @@
       </div>
     </form>
 
+    <!-- Actions -->
     <div class="form-actions">
-      <button type="button" (click)="saveTicketType()" class="action-btn add-btn">
+      <button
+        type="button"
+        (click)="saveTicketType()"
+        class="action-btn add-btn">
         Add Ticket Type
       </button>
 
-      <button type="button" (click)="getTicketType()" class="action-btn show-btn">
-        Search
+      <button
+        type="button"
+        (click)="getTicketType()"
+        class="action-btn show-btn">
+        Show
       </button>
 
-      <button type="button" (click)="updateTicketType()" class="action-btn update-btn">
+      <button
+        type="button"
+        (click)="updateTicketType()"
+        class="action-btn update-btn">
         Update
       </button>
 
-      <button type="button" (click)="deleteTicketType()" class="action-btn delete-btn">
+      <button
+        type="button"
+        (click)="deleteTicketType()"
+        class="action-btn delete-btn">
         Delete
       </button>
 
-      <button type="button" class="action-btn clear-btn" (click)="newTicketType()">
-        Clear
-      </button>
     </div>
 
+    <!-- Error -->
     <div *ngIf="errMsg" class="error-container">
       <div class="error-message">
         {{ errMsg }}
@@ -78,12 +109,13 @@
     </div>
   </section>
 
+  <!-- Table Section -->
   <section class="table-section">
     <div class="table-header">
       <div class="table-icon">📋</div>
       <div>
         <h2 class="table-title">Ticket Types List</h2>
-        <p class="table-subtitle">List of all available ticket types</p>
+        <p class="table-subtitle">All available ticket types</p>
       </div>
     </div>
 
@@ -107,11 +139,11 @@
         </thead>
         <tbody>
           <tr *ngFor="let tt of ticketTypes">
-            <td>{{ tt.ticketTypeId }}</td>
-            <td>{{ tt.typeName }}</td>
+            <td class="tickettype-id">{{ tt.ticketTypeId }}</td>
+            <td class="type-name">{{ tt.typeName }}</td>
             <td>{{ tt.description }}</td>
-            <td>{{ tt.slaId }}</td>
-            <td>{{ tt.deptId }}</td>
+            <td class="sla-id">{{ tt.slaId }}</td>
+            <td class="dept-id">{{ tt.deptId }}</td>
           </tr>
         </tbody>
       </table>
