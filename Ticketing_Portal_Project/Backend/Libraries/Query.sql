@@ -17,7 +17,7 @@ INSERT INTO Employee (EmpId, EmpName, Password, Role, DeptId) VALUES
 ('E002', 'Priya Sharma', 'Priya@123', 'HR Executive', 'D002'),
 ('E003', 'Rahul Menon', 'Rahul@123', 'Accountant', 'D003'),
 ('E004', 'Sana Banu', 'Sana@123', 'Support Agent', 'D004');
-
+ 
 select * from Employee
 
 -- 3.SLA Sample Data
