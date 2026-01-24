@@ -1,5 +1,6 @@
 <nav class="main-nav">
-    @if(username) {
+   @if(authService.isLoggedIn$ | async; as isLoggedIn) {
+    @if(isLoggedIn) {
         <div class="nav-container">
             <div class="nav-links">
 
@@ -43,6 +44,9 @@
                        SLA
                     </a>
                 }
+               <!-- <a (click)="authService.logout()" class="logout-link" style="cursor: pointer;">
+                   Logout
+                </a> -->
 
                 <a routerLink="/logout"
                    routerLinkActive="active">
@@ -57,6 +61,7 @@
             </div>
         </div>
     }
+   }
 
     @else {
         <div class="nav-container">

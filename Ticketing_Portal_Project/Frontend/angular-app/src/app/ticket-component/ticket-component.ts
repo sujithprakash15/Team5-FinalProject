@@ -19,7 +19,7 @@ export class TicketComponent implements OnInit {
   tickets: Ticket[] = [];
   allTickets: Ticket[] = [];
   ticket: Ticket = new Ticket("", "", "", "", new Date(), "Open", "", "");
-
+  viewMode: string = "created";
   ticketTypes: any[] = [];
   employees: Employee[] = [];
   errMsg: string = "";
@@ -64,13 +64,18 @@ export class TicketComponent implements OnInit {
   showAllTickets(): void {
     this.ticketSvc.getAllTickets().subscribe({
       next: (res: Ticket[]) => {
-
         if (this.role === "ADMIN") {
           this.tickets = res;
         } else {
-          this.tickets = res.filter(
-            t => t.createdByEmpId === this.loggedEmpId
-          );
+          if (this.viewMode === "created") {
+            this.tickets = res.filter(
+              t => t.createdByEmpId === this.loggedEmpId
+            );
+          } else {
+            this.tickets = res.filter(
+              t => t.assignedToEmpId === this.loggedEmpId
+            );
+          }
         }
 
         this.allTickets = this.tickets;
@@ -79,6 +84,11 @@ export class TicketComponent implements OnInit {
       error: err => this.errMsg = err.error
     });
   }
+
+  switchView(mode: string): void {
+  this.viewMode = mode;
+  this.showAllTickets();
+}
 
   showTicket(): void {
     this.ticketSvc.getTicket(this.ticket.ticketId).subscribe({
@@ -112,17 +122,23 @@ export class TicketComponent implements OnInit {
   }
 
   updateTicket(): void {
-    this.ticketSvc.updateTicket(
-      this.ticket.ticketId,
-      this.ticket
-    ).subscribe({
-      next: () => {
-        this.showAllTickets();
-        alert("Ticket updated successfully");
-      },
-      error: err => this.errMsg = err.error
-    });
-  }
+  console.log('Updating ticket with ID:', this.ticket.ticketId);
+  console.log('Ticket data being sent:', JSON.stringify(this.ticket));
+  
+  this.ticketSvc.updateTicket(
+    this.ticket.ticketId,
+    this.ticket
+  ).subscribe({
+    next: () => {
+      this.showAllTickets();
+      alert("Ticket updated successfully");
+    },
+    error: err => {
+      console.log('Error details:', err);
+      this.errMsg = err.error;
+    }
+  });
+}
 
   deleteTicket(): void {
     this.ticketSvc.deleteTicket(this.ticket.ticketId).subscribe({

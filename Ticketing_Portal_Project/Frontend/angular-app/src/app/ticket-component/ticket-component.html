@@ -126,6 +126,19 @@
 
   </section>
 
+  <div *ngIf="role !== 'ADMIN'" class="view-toggle">
+  <button class="toggle-btn" 
+          [class.active]="viewMode === 'created'"
+          (click)="switchView('created')">
+    🗂 My Created Tickets
+  </button>
+  <button class="toggle-btn"
+          [class.active]="viewMode === 'assigned'"
+          (click)="switchView('assigned')">
+    📋 Tickets Assigned to Me
+  </button>
+</div>
+
   <section class="filters-section">
 
     <h3>🔍 Filter Tickets</h3>
