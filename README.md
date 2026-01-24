@@ -1,52 +1,56 @@
-# Fronend-Angular
-To install Angular, you need to set up its Command Line Interface (CLI) on your computer. This requires Node.js to be installed first, as Angular uses the Node Package Manager (npm) to manage its tools.
+# Online Ticketing System
 
-Step 1: Install Node.js
-Angular requires an active LTS (Long Term Support) version of Node.js.
+A complete support ticket management system with Angular frontend and ASP.NET Core WebAPI backend, deployed on Azure cloud infrastructure.
 
-Go to the official Node.js website.
+**Status**: Production Ready  
+**Frontend**: Angular  
+**Backend**: ASP.NET Core  
+**Database**: SQL Server  
+**Deployment**: Azure  
+**License**: [MIT License](LICENSE)
 
-Download and install the version labeled "LTS".
+## 📋 Table of Contents
+- [Features](#✨-features)
+- [Tech Stack](#🛠️-tech-stack)
+- [Project Structure](#📁-project-structure)
+- [Quick Start](#⚡-quick-start)
+- [Detailed Setup](#🔧-detailed-setup)
+- [API Documentation](#📚-api-documentation)
+- [Development](#💻-development)
+- [Deployment](#☁️-deployment)
+- [Contributing](#🤝-contributing)
 
-To verify the installation, open your terminal (or Command Prompt) and type:
+## ✨ Features
 
-node -v
+### Frontend (Angular)
+- **🔐 User Authentication & Authorization** - JWT-based login/register with role management (Admin, Support Agent, Customer)
+- **🎫 Ticket Management** - Full CRUD operations for support tickets with advanced filtering and sorting
+- **📱 Responsive Design** - Mobile-friendly interface with Angular Material and Bootstrap
+- **🔔 Real-time Updates** - Live ticket status updates via SignalR/WebSocket notifications
+- **📊 Dashboard & Analytics** - Visual reports and statistics for administrators with charts
+- **💬 Ticket Comments** - Threaded conversations for each ticket with file attachments
+- **📧 Email Notifications** - Automated email alerts for ticket updates and assignments
+- **📄 Export Functionality** - Export tickets and reports to PDF/Excel formats
 
-npm -v
+### Backend (ASP.NET Core WebAPI)
+- **🛡️ Secure REST API** - JWT authentication with role-based authorization (RBAC)
+- **🗄️ Entity Framework Core** - Database operations with code-first migrations and seed data
+- **📦 Repository & Unit of Work Patterns** - Clean architecture with service layer and dependency injection
+- **🧪 Unit & Integration Tests** - Comprehensive test coverage with xUnit and Moq
+- **📄 Swagger/OpenAPI** - Interactive API documentation with authentication support
+- **📈 Performance Monitoring** - Request logging, performance tracking, and health checks
+- **🔍 Advanced Search** - Full-text search and filtering capabilities for tickets
+- **📊 Reporting Endpoints** - RESTful endpoints for dashboard analytics and metrics
 
-Step 2: Install Angular CLI
-Once Node.js is ready, you can install the Angular CLI globally so you can use the ng command anywhere on your system.
+## 🛠️ Tech Stack
 
-Command: npm install -g @angular/cli
-
-Note for macOS/Linux: If you get a permission error, you may need to add sudo at the beginning: sudo npm install -g @angular/cli.
-
-Step 3: Verify the Installation
-Check that Angular is installed correctly by running:
-
-Command: ng version (or ng v)
-
-Step 4: Create Your First Project
-
-ng new my-app (Follow the prompts for CSS and Routing).
-
-Step 5: Generating Code
-
-ng g c <name> – Create a Component (UI element).
-
-ng g s <name> – Create a Service (Data/Logic).
-
-Step 6: Running The App
-
-cd my-app
-
-ng serve --open (run it locally)
-
-ng build (Compiles the app into the /dist folder for hosting)
-
-# Apis
-
-
-
-
-
+| Component | Technology |
+|-----------|------------|
+| **Frontend** | Angular 15+, TypeScript 5+, RxJS 7+, Angular Material, Bootstrap 5 |
+| **Backend** | ASP.NET Core WebAPI 7/8, C# 11+, .NET 8 Runtime |
+| **Database** | SQL Server 2022, Azure SQL Database |
+| **ORM** | Entity Framework Core 7/8, Code-First Migrations |
+| **Authentication** | JWT Bearer Tokens, BCrypt.NET, ASP.NET Core Identity |
+| **Real-time** | SignalR for WebSocket communication |
+| **Tools** | Git, Docker, Swagger/OpenAPI, Azure CLI |
+| **Cloud Services** | Azure App Service, Azure SQL Database, Azure Storage, Azure Application Insights |
