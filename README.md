@@ -1,4 +1,4 @@
-# Online Ticketing System
+# Ticketing Portal System
 
 A complete support ticket management system with Angular frontend and ASP.NET Core WebAPI backend, deployed on Azure cloud infrastructure.
 
