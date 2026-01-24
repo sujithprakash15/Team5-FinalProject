@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TicketService } from '../ticket-service';
 import { Ticket } from '../models/Ticket';
 import { Employee } from '../models/Employee';
+import { TicketType } from '../models/TicketType';
 
 @Component({
   selector: 'app-ticket-component',
