@@ -29,8 +29,6 @@ A complete support ticket management system with Angular frontend and ASP.NET Co
 - **🔔 Real-time Updates** - Live ticket status updates via SignalR/WebSocket notifications
 - **📊 Dashboard & Analytics** - Visual reports and statistics for administrators with charts
 - **💬 Ticket Comments** - Threaded conversations for each ticket with file attachments
-- **📧 Email Notifications** - Automated email alerts for ticket updates and assignments
-- **📄 Export Functionality** - Export tickets and reports to PDF/Excel formats
 
 ### Backend (ASP.NET Core WebAPI)
 - **🛡️ Secure REST API** - JWT authentication with role-based authorization (RBAC)
