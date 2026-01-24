@@ -9,13 +9,14 @@ select * from Department
 
 -- 2.Employee Sample Data
 INSERT INTO Employee (EmpId, EmpName, Password, Role, DeptId) VALUES
+('E008', 'Selva', 'Sel@123', 'User', 'D003');
 ('E001', 'Arun Kumar', 'Arun@123', 'Engineer', 'D001'),
 ('E002', 'Priya Sharma', 'Priya@123', 'HR Executive', 'D002'),
 ('E003', 'Rahul Menon', 'Rahul@123', 'Accountant', 'D003'),
 ('E004', 'Sana Banu', 'Sana@123', 'Support Agent', 'D004'),
 ('E005', 'Sri harini', 'Sri@123', 'Admin', 'D004'),
 ('E006', 'Sujith', 'Suj@123', 'Admin', 'D003'),
-('E007', 'Selva', 'Sel@123', 'User', 'D003');
+
 
 select * from Employee
 
@@ -57,6 +58,10 @@ VALUES
 ('R00001', 'TK01', 'E001', 'E002', 'I am facing frequent system crashes while working.');
  
 SELECT * FROM TicketReply;
+SELECT *
+FROM TicketReply
+WHERE TicketId = 'TK04';
+
 
 DELETE FROM Ticket;
 

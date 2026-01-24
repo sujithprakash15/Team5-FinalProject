@@ -57,14 +57,8 @@ public class EYTicketPortalContext : DbContext
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-    //    optionsBuilder.UseSqlServer(
-    //         @"Server=localhost\SQLEXPRESS;
-    //         Database=EYTicketPortalDB3;
-    //         Trusted_Connection=True;
-    //         TrustServerCertificate=True;");
-    // }
-       optionsBuilder.UseSqlServer(
-"Server=tcp:team5sqlserver.database.windows.net,1433;Initial Catalog=ticketportaldb;Persist Security Info=False;User ID=team5;Password=User%2025;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30");
-    }
-
+        optionsBuilder.UseSqlServer(
+             @"data source=localhost\SQLEXPRESS; database=EYTicketPortalDB2; user id=sa; password=User%2025; Trust Server Certificate=true");
+     }
 }
+
